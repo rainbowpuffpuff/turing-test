@@ -1,0 +1,724 @@
+{
+  "startedAt": "2026-06-10T19:27:01.792Z",
+  "deployer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+  "demos": {
+    "pharos-agent-registry": [
+      {
+        "step": "register_agent",
+        "at": "2026-06-10T19:27:06.378Z",
+        "result": {
+          "ok": true,
+          "name": "pharoskit-demo-agent",
+          "owner": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "contract": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3",
+          "txHash": "0x1145510d4c5b94c30bda71901f77b65684e2a456ebedd74aa9e7532306c4a90d",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x1145510d4c5b94c30bda71901f77b65684e2a456ebedd74aa9e7532306c4a90d"
+        }
+      },
+      {
+        "step": "declare_capability:x402-payments",
+        "at": "2026-06-10T19:27:14.421Z",
+        "result": {
+          "ok": true,
+          "label": "x402-payments",
+          "capabilityHash": "0x223e4a462ff3d90d3a5a434ad4c9367c083223f8bb3bdbb82a17d45922fb552d",
+          "txHash": "0x0e091b7808c2c190a2f99e086feb047216ac111d747986d37ed806d425653ab3",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x0e091b7808c2c190a2f99e086feb047216ac111d747986d37ed806d425653ab3"
+        }
+      },
+      {
+        "step": "declare_capability:escrow-commerce",
+        "at": "2026-06-10T19:27:20.188Z",
+        "result": {
+          "ok": true,
+          "label": "escrow-commerce",
+          "capabilityHash": "0x898855e3d694d3561ad6a010aa919f466c4ccf075a049e7386de903c05e726df",
+          "txHash": "0x470ec85ac1d7c106385b056ea6407029cc18576c8195f5f87abe3e3cf4fce808",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x470ec85ac1d7c106385b056ea6407029cc18576c8195f5f87abe3e3cf4fce808"
+        }
+      },
+      {
+        "step": "lookup_agent",
+        "at": "2026-06-10T19:27:23.720Z",
+        "result": {
+          "ok": true,
+          "owner": "0x0000000000000000000000000000000000000020",
+          "name": "",
+          "metadataURI": "\u0000",
+          "endpoint": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\"https://example.com/pharoskit.json\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0015mcp+stdio://pharoskit\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+          "registeredAt": "1970-01-01T00:06:24.000Z",
+          "updatedAt": "2026-06-10T19:27:03.000Z",
+          "active": false,
+          "capabilities": [
+            "0x223e4a462ff3d90d3a5a434ad4c9367c083223f8bb3bdbb82a17d45922fb552d",
+            "0x898855e3d694d3561ad6a010aa919f466c4ccf075a049e7386de903c05e726df"
+          ],
+          "capabilityCount": 2,
+          "explorer": "https://atlantic.pharosscan.xyz/address/0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "contract": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3"
+        }
+      }
+    ],
+    "pharos-token-launcher": [
+      {
+        "step": "deploy_token",
+        "at": "2026-06-10T19:27:30.488Z",
+        "result": {
+          "ok": true,
+          "token": "0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e",
+          "name": "PharosKit Demo Credits",
+          "symbol": "PKDC",
+          "decimals": 18,
+          "cap": "1000000",
+          "initialMint": "10000",
+          "owner": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "txHash": "0xc9367cb8718bbaeea82a376d4e4e67ec0b3cd0db5c1725792f7d6f64084ac436",
+          "gasUsed": 882911,
+          "explorer": "https://atlantic.pharosscan.xyz/address/0x14c957c36e438aefae0e0bd241ec75a06af06c3e",
+          "deployTx": "https://atlantic.pharosscan.xyz/tx/0xc9367cb8718bbaeea82a376d4e4e67ec0b3cd0db5c1725792f7d6f64084ac436"
+        }
+      },
+      {
+        "step": "mint_tokens",
+        "at": "2026-06-10T19:27:39.195Z",
+        "result": {
+          "ok": true,
+          "minted": "5000",
+          "to": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "txHash": "0xf95f3111bb432c3c6096e56849d450c42fdc1785f161ad934423e71d09864379",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0xf95f3111bb432c3c6096e56849d450c42fdc1785f161ad934423e71d09864379"
+        }
+      },
+      {
+        "step": "token_info",
+        "at": "2026-06-10T19:27:45.534Z",
+        "result": {
+          "ok": true,
+          "token": "0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e",
+          "name": "PharosKit Demo Credits",
+          "symbol": "PKDC",
+          "decimals": 18,
+          "totalSupply": "15000",
+          "cap": "1000000",
+          "owner": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "mintingRenounced": false,
+          "balances": [
+            {
+              "address": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+              "balance": "15000"
+            }
+          ],
+          "explorer": "https://atlantic.pharosscan.xyz/address/0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e"
+        }
+      }
+    ],
+    "pharos-payroll-batch": [
+      {
+        "step": "dry_run",
+        "at": "2026-06-10T19:27:46.640Z",
+        "result": {
+          "ok": true,
+          "payer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "recipients": 3,
+          "rowErrors": [],
+          "duplicates": [],
+          "asset": "native",
+          "symbol": "PHRS",
+          "totalToSend": "0.00003 PHRS",
+          "payerAssetBalance": "0.004091416 PHRS",
+          "estimatedFees": "0.0003 PHRS",
+          "executionPlan": "1 Multicall3 aggregate3Value transaction (3 payouts)",
+          "sufficient": {
+            "asset": true,
+            "gas": true
+          },
+          "shortfall": null
+        }
+      },
+      {
+        "step": "run_payroll(native,multicall3)",
+        "at": "2026-06-10T19:36:53.409Z",
+        "result": {
+          "ok": true,
+          "mode": "multicall3-single-tx",
+          "recipients": 3,
+          "totalSent": "0.00003 PHRS",
+          "txHash": "0x7dfaeed04d106031d93c921986b387b31e180b16efd30de21bf93c45eee19f7e",
+          "gasUsed": 57172,
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x7dfaeed04d106031d93c921986b387b31e180b16efd30de21bf93c45eee19f7e"
+        }
+      },
+      {
+        "step": "payout_report",
+        "at": "2026-06-10T19:36:56.169Z",
+        "result": {
+          "ok": true,
+          "transactions": [
+            {
+              "txHash": "0x7dfaeed04d106031d93c921986b387b31e180b16efd30de21bf93c45eee19f7e",
+              "status": "success",
+              "block": 23921715,
+              "gasUsed": 57172,
+              "tokenTransfers": [],
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0x7dfaeed04d106031d93c921986b387b31e180b16efd30de21bf93c45eee19f7e"
+            }
+          ]
+        }
+      }
+    ],
+    "pharos-agent-escrow": [
+      {
+        "step": "create_escrow",
+        "at": "2026-06-10T19:27:55.652Z",
+        "result": {
+          "ok": true,
+          "escrowId": 0,
+          "contract": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
+          "taskHash": "0xa4a11d1891f8647eeff6b1066e673ff111cbf8c8f9cee5343df8b2a61ebbe688",
+          "deadline": "2026-06-10T20:27:51.000Z",
+          "txHash": "0x2b38e9578da794b37d4b6ddf07a855b67861b0310a74199fb8200f33b6facb04",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x2b38e9578da794b37d4b6ddf07a855b67861b0310a74199fb8200f33b6facb04"
+        }
+      },
+      {
+        "step": "submit_delivery",
+        "at": "2026-06-10T19:28:03.718Z",
+        "result": {
+          "ok": true,
+          "escrowId": 0,
+          "deliveryHash": "0xe200c5ad5df95acc2a079c5291de7a213116cd64a8c75b5657b043ab279e88fa",
+          "txHash": "0x7fee06ef8d87b45b915adbcd6f3310b3be90364c03e9f77880397489396348de",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x7fee06ef8d87b45b915adbcd6f3310b3be90364c03e9f77880397489396348de"
+        }
+      },
+      {
+        "step": "release_payment",
+        "at": "2026-06-10T19:28:09.756Z",
+        "result": {
+          "ok": true,
+          "escrowId": 0,
+          "txHash": "0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688"
+        }
+      },
+      {
+        "step": "get_escrow(final-state)",
+        "at": "2026-06-10T19:28:11.319Z",
+        "result": {
+          "ok": true,
+          "escrowId": 0,
+          "contract": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
+          "client": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "worker": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "amount": "0",
+          "amountWei": "0",
+          "deadline": "2026-06-10T20:27:51.000Z",
+          "disputeWindowSeconds": 60,
+          "deliveredAt": "2026-06-10T19:28:00.000Z",
+          "status": "Released",
+          "taskHash": "0xa4a11d1891f8647eeff6b1066e673ff111cbf8c8f9cee5343df8b2a61ebbe688",
+          "deliveryHash": "0xe200c5ad5df95acc2a079c5291de7a213116cd64a8c75b5657b043ab279e88fa"
+        }
+      }
+    ],
+    "pharos-stream-pay": [
+      {
+        "step": "open_stream",
+        "at": "2026-06-10T19:28:17.994Z",
+        "result": {
+          "ok": true,
+          "streamId": 0,
+          "contract": "0xb6c2312de42b48c934ab532ccbcb80ab38a71c49",
+          "payer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "recipient": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "total": "0.0002",
+          "endsAt": "2026-06-10T19:30:11.000Z",
+          "txHash": "0x17a0c812b18916216481e7a76ce2b260ae6b5151cca903bd7a0fc4d0c3255793",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x17a0c812b18916216481e7a76ce2b260ae6b5151cca903bd7a0fc4d0c3255793"
+        }
+      },
+      {
+        "step": "stream_status(mid-stream)",
+        "at": "2026-06-10T19:28:40.510Z",
+        "result": {
+          "ok": true,
+          "streamId": 0,
+          "payer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "recipient": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "deposit": "0.0002",
+          "withdrawn": "0",
+          "withdrawableNow": "0.000045762711864406",
+          "start": "2026-06-10T19:28:13.000Z",
+          "stop": "2026-06-10T19:30:11.000Z",
+          "progressPct": 22.88,
+          "cancelled": false
+        }
+      },
+      {
+        "step": "withdraw_vested",
+        "at": "2026-06-10T19:28:48.104Z",
+        "result": {
+          "ok": true,
+          "streamId": 0,
+          "txHash": "0xa8aa3ac7129bda6c2ddacff75e99a31d09286c26ebaab10c70fcaf8a8a7bd6e9",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0xa8aa3ac7129bda6c2ddacff75e99a31d09286c26ebaab10c70fcaf8a8a7bd6e9"
+        }
+      },
+      {
+        "step": "cancel_stream(fair-split)",
+        "at": "2026-06-10T19:28:54.733Z",
+        "result": {
+          "ok": true,
+          "streamId": 0,
+          "txHash": "0x27b19c82e4852e6c2a4d184d49af1031bf8caa3cfd66c7888d280cd8aaf6e97c",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x27b19c82e4852e6c2a4d184d49af1031bf8caa3cfd66c7888d280cd8aaf6e97c"
+        }
+      }
+    ],
+    "pharos-invoice-book": [
+      {
+        "step": "create_invoice(native)",
+        "at": "2026-06-10T19:28:58.951Z",
+        "result": {
+          "ok": true,
+          "invoiceId": 0,
+          "contract": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+          "issuer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "amount": "0.0001 PHRS",
+          "token": "native",
+          "payerRestriction": "anyone may pay",
+          "dueDate": "2026-06-11T19:28:54.000Z",
+          "memo": "INV-DEMO-001",
+          "memoHash": "0xaf1472de878d10d1371c8a2079775bbf2fc113625ae83eb01fe66d1d12b2f817",
+          "txHash": "0xa2a529ec29802da3ba68fa00774ca413a5655a97f8352d770c9d36180b51319e",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0xa2a529ec29802da3ba68fa00774ca413a5655a97f8352d770c9d36180b51319e"
+        }
+      },
+      {
+        "step": "create_invoice(PKDC)",
+        "at": "2026-06-10T19:29:09.898Z",
+        "result": {
+          "ok": true,
+          "invoiceId": 1,
+          "contract": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+          "issuer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "amount": "25 PKDC",
+          "token": "0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e",
+          "payerRestriction": "anyone may pay",
+          "dueDate": "2026-06-11T19:29:04.000Z",
+          "memo": "INV-DEMO-002",
+          "memoHash": "0x61789c56329268ff2218bb38b9967e74a2f5babd0af1d5087bacdf7bfa9b2363",
+          "txHash": "0x4d1e549d1eca15e59b1dbdbdd2d6ca1f90ecf27ec2e5676f1e49b9cc405dbba4",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x4d1e549d1eca15e59b1dbdbdd2d6ca1f90ecf27ec2e5676f1e49b9cc405dbba4"
+        }
+      },
+      {
+        "step": "invoice_status(partial)",
+        "at": "2026-06-10T19:29:15.913Z",
+        "result": {
+          "ok": true,
+          "invoiceId": 1,
+          "contract": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+          "issuer": "0x0000000000000000000000000000000000000020",
+          "payerRestriction": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "asset": "native",
+          "symbol": "PHRS",
+          "total": "118669910471884839848356285371.27912542278519507",
+          "paid": "25",
+          "remaining": "118669910471884839848356285346.27912542278519507",
+          "dueDate": null,
+          "overdue": false,
+          "memo": "",
+          "memoHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "payments": []
+        }
+      },
+      {
+        "step": "pay_invoice(native,full)",
+        "at": "2026-06-10T19:37:03.456Z",
+        "result": {
+          "ok": true,
+          "invoiceId": 0,
+          "paid": "0.0001 PHRS",
+          "settled": true,
+          "txHash": "0xa1b4885d4a29d0f8400bcc01043a713abff1488fe852404dca42aa80827110eb",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0xa1b4885d4a29d0f8400bcc01043a713abff1488fe852404dca42aa80827110eb"
+        }
+      },
+      {
+        "step": "pay_invoice(PKDC,partial)",
+        "at": "2026-06-10T19:37:20.236Z",
+        "result": {
+          "ok": true,
+          "invoiceId": 1,
+          "paid": "10 PKDC",
+          "settled": false,
+          "txHash": "0xae7621b66b3b0048bf9bf6adefc039ee54d3d4ad79dde9d4622538da15380bd4",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0xae7621b66b3b0048bf9bf6adefc039ee54d3d4ad79dde9d4622538da15380bd4"
+        }
+      },
+      {
+        "step": "invoice_status(partial)",
+        "at": "2026-06-10T19:37:32.275Z",
+        "result": {
+          "ok": true,
+          "invoiceId": 1,
+          "contract": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+          "issuer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "payerRestriction": null,
+          "asset": "0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e",
+          "symbol": "PKDC",
+          "total": "25",
+          "paid": "10",
+          "remaining": "15",
+          "dueDate": "2026-06-11T19:29:04.000Z",
+          "overdue": false,
+          "status": "PartiallyPaid",
+          "memo": "INV-DEMO-002",
+          "memoHash": "0x61789c56329268ff2218bb38b9967e74a2f5babd0af1d5087bacdf7bfa9b2363",
+          "payments": [
+            {
+              "payer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+              "amount": "10",
+              "totalPaidAfter": "10",
+              "settled": false,
+              "txHash": "0xae7621b66b3b0048bf9bf6adefc039ee54d3d4ad79dde9d4622538da15380bd4",
+              "block": 23921741
+            }
+          ]
+        }
+      }
+    ],
+    "pharos-smart-account": [
+      {
+        "step": "predict_account",
+        "at": "2026-06-10T19:29:18.413Z",
+        "result": {
+          "ok": true,
+          "owner": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "salt": 7,
+          "account": "0x1f19C3783f603B1e2778De59136316Dcf3B67652",
+          "deployed": false,
+          "entryPoint": "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
+          "factory": "0x9406Cc6185a346906296840746125a0E44976454",
+          "explorer": "https://atlantic.pharosscan.xyz/address/0x1f19C3783f603B1e2778De59136316Dcf3B67652",
+          "note": "You can send PHRS/tokens to this address now — it is owned by your key even before deployment."
+        }
+      },
+      {
+        "step": "deploy_account",
+        "at": "2026-06-10T19:29:27.085Z",
+        "result": {
+          "ok": true,
+          "account": "0x1f19C3783f603B1e2778De59136316Dcf3B67652",
+          "owner": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "txHash": "0x99bf8d55ece283a9bb0101a31f03f38c7dce0ad1a7ca3ac62cc939503d43eccd",
+          "gasUsed": 288290,
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x99bf8d55ece283a9bb0101a31f03f38c7dce0ad1a7ca3ac62cc939503d43eccd",
+          "accountExplorer": "https://atlantic.pharosscan.xyz/address/0x1f19C3783f603B1e2778De59136316Dcf3B67652"
+        }
+      },
+      {
+        "step": "fund_account(via payroll multicall)",
+        "at": "2026-06-10T19:29:33.066Z",
+        "result": {
+          "ok": true,
+          "mode": "multicall3-single-tx",
+          "recipients": 1,
+          "totalSent": "0.00005 PHRS",
+          "txHash": "0x3c9a789e5067bc494393ed0aafa3a5710747276cf8b4652844657f737efc2ff7",
+          "gasUsed": 38833,
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x3c9a789e5067bc494393ed0aafa3a5710747276cf8b4652844657f737efc2ff7"
+        }
+      },
+      {
+        "step": "account_status",
+        "at": "2026-06-10T19:29:38.717Z",
+        "result": {
+          "ok": true,
+          "account": "0x1f19C3783f603B1e2778De59136316Dcf3B67652",
+          "deployed": true,
+          "owner": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "balance": "0.00005 PHRS",
+          "entryPointDeposit": "0",
+          "explorer": "https://atlantic.pharosscan.xyz/address/0x1f19C3783f603B1e2778De59136316Dcf3B67652"
+        }
+      },
+      {
+        "step": "mint_PKDC_to_account",
+        "at": "2026-06-10T19:37:40.451Z",
+        "result": {
+          "ok": true,
+          "minted": "100",
+          "to": "0x1f19C3783f603B1e2778De59136316Dcf3B67652",
+          "txHash": "0x2b82d860a5ef5b34b223a671c3f4f4c94412771ced9eeee44a4f9dc3a1f4d1d1",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x2b82d860a5ef5b34b223a671c3f4f4c94412771ced9eeee44a4f9dc3a1f4d1d1"
+        }
+      },
+      {
+        "step": "executeBatch(2 PKDC transfers, 1 tx)",
+        "at": "2026-06-10T19:41:44.304Z",
+        "result": {
+          "ok": true,
+          "txHash": "0x710915bc760f25f0cc69e5f5b014169689cae8491210b984d049265e1dc7e30c",
+          "gasUsed": 92585,
+          "logs": 2,
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x710915bc760f25f0cc69e5f5b014169689cae8491210b984d049265e1dc7e30c",
+          "reverted": false
+        }
+      }
+    ],
+    "pharos-x402-merchant": [
+      {
+        "step": "start_paywall_server",
+        "at": "2026-06-10T19:29:38.789Z",
+        "result": {
+          "ok": true,
+          "url": "http://127.0.0.1:4021/premium",
+          "flow": "1) GET → 402 + PAYMENT-REQUIRED  2) pay on Pharos  3) GET with PAYMENT-SIGNATURE: base64({nonce, txHash}) → 200 + PAYMENT-RESPONSE",
+          "network": "atlantic-testnet",
+          "autoShutdownSeconds": 300
+        }
+      }
+    ],
+    "pharos-x402-buyer": [
+      {
+        "step": "fetch_with_x402(full closed loop)",
+        "at": "2026-06-10T19:29:44.851Z",
+        "result": {
+          "ok": true,
+          "paid": true,
+          "txHash": "0x77c18c8730734a7e8da9698ce4f7eaef1f59520c9546e0b3896e85eaabe640a1",
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0x77c18c8730734a7e8da9698ce4f7eaef1f59520c9546e0b3896e85eaabe640a1",
+          "pricePaid": "0.00005 PHRS",
+          "status": 200,
+          "content": "{\"premium\":true,\"message\":\"Paid content unlocked via x402 on Pharos\",\"timestamp\":\"2026-06-10T19:29:38.782Z\"}",
+          "settlementReceipt": {
+            "x402Version": 1,
+            "scheme": "exact",
+            "network": "eip155:688689",
+            "resource": "GET /premium",
+            "nonce": "0xfc82b1a38ec3abc812f6bc461e7df297",
+            "txHash": "0x77c18c8730734a7e8da9698ce4f7eaef1f59520c9546e0b3896e85eaabe640a1",
+            "payer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+            "payTo": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+            "amount": "50000000000000",
+            "asset": "native",
+            "settledAt": 1781119784,
+            "signature": "0xe7837461ae8765d0aa3d4aa0f748bc64f25fb3fda28e7cb95782e112c7f8352d2fc00ee4ea87aeef0cb61934324f027c4451171b55d428eaca01a879085cf10d1c",
+            "signer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09"
+          }
+        }
+      },
+      {
+        "step": "spending_report",
+        "at": "2026-06-10T19:29:45.353Z",
+        "result": {
+          "ok": true,
+          "payments": [
+            {
+              "at": "2026-06-10T19:29:43.766Z",
+              "amount": 0.00005,
+              "asset": "eip155:688689:native",
+              "resource": "GET /premium",
+              "txHash": "0x77c18c8730734a7e8da9698ce4f7eaef1f59520c9546e0b3896e85eaabe640a1"
+            }
+          ],
+          "totals": {
+            "eip155:688689:native": 0.00005
+          },
+          "sessionBudget": "unlimited"
+        }
+      }
+    ],
+    "pharos-chain-sentinel": [
+      {
+        "step": "watch_address(deployer)",
+        "at": "2026-06-10T19:29:46.968Z",
+        "result": {
+          "ok": true,
+          "address": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "isContract": false,
+          "balance": "0.002846933 PHRS",
+          "nonce": 21,
+          "scannedFromBlock": 23918465,
+          "latestBlock": 23921465,
+          "tokenTransfers": {
+            "incoming": [],
+            "outgoing": []
+          },
+          "diff": null,
+          "cursor": {
+            "block": 23921465,
+            "balance": "2846933000000000",
+            "nonce": 21
+          },
+          "explorer": "https://atlantic.pharosscan.xyz/address/0xc5f02b179A156414b72Af7d2E5998Ac754F69a09"
+        }
+      },
+      {
+        "step": "balance_watch",
+        "at": "2026-06-10T19:29:51.502Z",
+        "result": {
+          "ok": true,
+          "network": "atlantic-testnet",
+          "balances": [
+            {
+              "address": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+              "native": "0.002846933 PHRS",
+              "tokens": {}
+            }
+          ],
+          "alerts": [],
+          "checkedAt": "2026-06-10T19:29:51.501Z"
+        }
+      },
+      {
+        "step": "tx_inspect(escrow release)",
+        "at": "2026-06-10T19:29:52.968Z",
+        "result": {
+          "ok": true,
+          "txHash": "0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688",
+          "status": "success",
+          "from": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+          "to": "0x22A43E08b67DaB1F46a8f908834Cd7e37E3Fa3Cd",
+          "contractCreated": null,
+          "value": "0 PHRS",
+          "function": "unknown selector 0x37bdc99b",
+          "gas": {
+            "gasLimit": 71651,
+            "gasUsed": 45237,
+            "note": "Pharos charges gas_limit at inclusion (not gas_used) — size limits carefully",
+            "effectiveGasPrice": "1 gwei"
+          },
+          "tokenTransfers": [],
+          "eventCount": 1,
+          "block": 23921395,
+          "explorer": "https://atlantic.pharosscan.xyz/tx/0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688"
+        }
+      },
+      {
+        "step": "watch_events(AgentEscrow)",
+        "at": "2026-06-10T19:37:49.087Z",
+        "result": {
+          "ok": true,
+          "contract": "0x22A43E08b67DaB1F46a8f908834Cd7e37E3Fa3Cd",
+          "scanned": {
+            "fromBlock": 23916763,
+            "toBlock": 23921763
+          },
+          "found": 4,
+          "returned": 4,
+          "events": [
+            {
+              "event": "EscrowCreated",
+              "topic0": "0x296326d5cefdd2fd24dce37359102d595706cfb8c67f9d158ac2c28e92f96bbe",
+              "indexed": [
+                "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x000000000000000000000000c5f02b179a156414b72af7d2e5998ac754f69a09",
+                "0x000000000000000000000000c5f02b179a156414b72af7d2e5998ac754f69a09"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000b5e620f48000000000000000000000000000000000000000000000000000000000006a29c8c7a4a11d1891f8647eeff6b1066e673ff111cbf8c8f9cee5343df8b2a61ebbe688",
+              "tx": "0x2b38e9578da794b37d4b6ddf07a855b67861b0310a74199fb8200f33b6facb04",
+              "block": 23921383,
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0x2b38e9578da794b37d4b6ddf07a855b67861b0310a74199fb8200f33b6facb04"
+            },
+            {
+              "event": "unknown",
+              "topic0": "0x2aaf7ce1949df9ffc5cfe61975cc253ee5ed1ab5a91470f722c539aa2f67a679",
+              "indexed": [
+                "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x000000000000000000000000c5f02b179a156414b72af7d2e5998ac754f69a09"
+              ],
+              "data": "0x",
+              "tx": "0x2b38e9578da794b37d4b6ddf07a855b67861b0310a74199fb8200f33b6facb04",
+              "block": 23921383,
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0x2b38e9578da794b37d4b6ddf07a855b67861b0310a74199fb8200f33b6facb04"
+            },
+            {
+              "event": "unknown",
+              "topic0": "0x59fcfbc25d00e982e0bbd62937d18ff4f7c7ac667e13256d51154645e74484ab",
+              "indexed": [
+                "0x0000000000000000000000000000000000000000000000000000000000000000"
+              ],
+              "data": "0xe200c5ad5df95acc2a079c5291de7a213116cd64a8c75b5657b043ab279e88fa",
+              "tx": "0x7fee06ef8d87b45b915adbcd6f3310b3be90364c03e9f77880397489396348de",
+              "block": 23921390,
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0x7fee06ef8d87b45b915adbcd6f3310b3be90364c03e9f77880397489396348de"
+            },
+            {
+              "event": "unknown",
+              "topic0": "0x3bfce8de0db7450cc169b94323c210e69a36c6a4a58c9f5d96bec4973adce392",
+              "indexed": [
+                "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x000000000000000000000000c5f02b179a156414b72af7d2e5998ac754f69a09"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000b5e620f48000",
+              "tx": "0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688",
+              "block": 23921395,
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688"
+            }
+          ],
+          "cursor": {
+            "block": 23921763
+          }
+        }
+      },
+      {
+        "step": "watch_events(AgentRegistry)",
+        "at": "2026-06-10T19:37:55.490Z",
+        "result": {
+          "ok": true,
+          "contract": "0x204Ec9F83a804672121D946D3da7f66B5C7b2cc3",
+          "scanned": {
+            "fromBlock": 23916767,
+            "toBlock": 23921767
+          },
+          "found": 3,
+          "returned": 3,
+          "events": [
+            {
+              "event": "AgentRegistered",
+              "topic0": "0x37b3aaf4f807403887412a5994aa1832eface4a8c15501a3311bf21d3279ea3f",
+              "indexed": [
+                "0x000000000000000000000000c5f02b179a156414b72af7d2e5998ac754f69a09"
+              ],
+              "data": "0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000014706861726f736b69742d64656d6f2d6167656e7400000000000000000000000000000000000000000000000000000000000000000000000000000000000000156d63702b737464696f3a2f2f706861726f736b69740000000000000000000000",
+              "tx": "0x1145510d4c5b94c30bda71901f77b65684e2a456ebedd74aa9e7532306c4a90d",
+              "block": 23921342,
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0x1145510d4c5b94c30bda71901f77b65684e2a456ebedd74aa9e7532306c4a90d"
+            },
+            {
+              "event": "unknown",
+              "topic0": "0x08de0233811af93a24b438694c0c66a0e0f344927b52d5b865d353c3bfdc35d7",
+              "indexed": [
+                "0x000000000000000000000000c5f02b179a156414b72af7d2e5998ac754f69a09",
+                "0x223e4a462ff3d90d3a5a434ad4c9367c083223f8bb3bdbb82a17d45922fb552d"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000d783430322d7061796d656e747300000000000000000000000000000000000000",
+              "tx": "0x0e091b7808c2c190a2f99e086feb047216ac111d747986d37ed806d425653ab3",
+              "block": 23921348,
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0x0e091b7808c2c190a2f99e086feb047216ac111d747986d37ed806d425653ab3"
+            },
+            {
+              "event": "unknown",
+              "topic0": "0x08de0233811af93a24b438694c0c66a0e0f344927b52d5b865d353c3bfdc35d7",
+              "indexed": [
+                "0x000000000000000000000000c5f02b179a156414b72af7d2e5998ac754f69a09",
+                "0x898855e3d694d3561ad6a010aa919f466c4ccf075a049e7386de903c05e726df"
+              ],
+              "data": "0x0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000f657363726f772d636f6d6d657263650000000000000000000000000000000000",
+              "tx": "0x470ec85ac1d7c106385b056ea6407029cc18576c8195f5f87abe3e3cf4fce808",
+              "block": 23921355,
+              "explorer": "https://atlantic.pharosscan.xyz/tx/0x470ec85ac1d7c106385b056ea6407029cc18576c8195f5f87abe3e3cf4fce808"
+            }
+          ],
+          "cursor": {
+            "block": 23921767
+          }
+        }
+      }
+    ]
+  },
+  "finishedAt": "2026-06-10T19:37:55.490Z"
+}

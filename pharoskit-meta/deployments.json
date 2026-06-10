@@ -1,0 +1,35 @@
+{
+  "atlantic-testnet": {
+    "AgentEscrow": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
+    "StreamPay": "0xb6c2312de42b48c934ab532ccbcb80ab38a71c49",
+    "InvoiceBook": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+    "AgentRegistry": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3"
+  },
+  "details": {
+    "AgentEscrow": {
+      "address": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
+      "txHash": "0x07d5e2593820f36a963ea56717eeae77f23ecc3109c6ceeaaa9830b77e5dd1a3",
+      "gasUsed": 1172150
+    },
+    "StreamPay": {
+      "address": "0xb6c2312de42b48c934ab532ccbcb80ab38a71c49",
+      "txHash": "0xce56b747d43732042f09187e9d27ab21a88e1e822b6866b4390afb3bbe14b631",
+      "block": 23920584,
+      "gasUsed": 934919
+    },
+    "InvoiceBook": {
+      "address": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+      "txHash": "0x99524171f2dfb54414ac65a72e72581f4bc5f03e53de0ddb1588b87b41a60a4e",
+      "block": 23920590,
+      "gasUsed": 1156977
+    },
+    "AgentRegistry": {
+      "address": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3",
+      "txHash": "0x00d71b2679e1ca4b28daa7fac8887cbe02f11cfed74fa2cf32ebc14eccaaf628",
+      "block": 23920597,
+      "gasUsed": 1347007
+    }
+  },
+  "deployer": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+  "deployedAt": "2026-06-10T19:08:27.647Z"
+}
