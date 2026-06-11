@@ -149,74 +149,105 @@ footer{padding:42px 0 64px;color:var(--dim);font-size:14px}
     <div class="j">
       
       <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">IDENTITY</span> registering on-chain identity (idempotent)
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">IDENTITY</span> registration failed (RPC eth_estimateGas: execution reverted) — continuing without identity (graceful degradation)
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[client]</span> <span class="ph">POST</span> locking payment for task: gas-optimization analysis report
+        <span class="ag">[worker]</span> <span class="ph">IDENTITY</span> minting ERC-8004 identity NFT (registration-v1 file as on-chain data:URI)
         
       </div>
       <div class="j-row has-tx">
-        <span class="ag">[client]</span> <span class="ph">POST</span> task #1 funded and assigned
-        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x012f94c7545cf99ed041db64b8992abc2f2109f0af9a515fb7aab4e81f0b745e" target="_blank" rel="noopener noreferrer">0x012f94c7545cf99ed041db64b8992abc…</a></div>
+        <span class="ag">[worker]</span> <span class="ph">IDENTITY</span> agentId #1 minted in eip155:5003:0x9ab49b9f3be00ed5f5b2452844b877636d771efc
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0xa50af2d07d692b46d4923d618ff3720690207ad74843431e0968672d1bffc442" target="_blank" rel="noopener noreferrer">0xa50af2d07d692b46d4923d618ff37206…</a></div>
       </div>
       <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">OBSERVE</span> reading escrow #1 state from chain
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">RECOVER</span> read looks stale (empty struct from lagging RPC node) — re-reading in 3s
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">OBSERVE</span> found task: 0.00001 native, deadline 2026-06-11T12:34:22.000Z, status Accepted
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">DECIDE</span> policy check PASSED (price ≥ 0.000005, deadline runway OK) — accepting
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> performing chain-analysis inference (live network observation)
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference complete → recommendation: "NORMAL" @ block 39817398
-        
-      </div>
-      <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> anchoring inference result hash on-chain via deliver()
+        <span class="ag">[daemon]</span> <span class="ph">CYCLE</span> ── cycle 1/2 begins ──
         
       </div>
       <div class="j-row has-tx">
-        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference result anchored on-chain (hash=0x6bd1671ab42ef140…)
-        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0xb3a7abc917bc811780af47b66fab958313c6ded1b4c5f57e3ffece66dffb60fa" target="_blank" rel="noopener noreferrer">0xb3a7abc917bc811780af47b66fab9583…</a></div>
+        <span class="ag">[client]</span> <span class="ph">POST</span> task #2 funded (0.0005 MNT)
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x8d96f78b7b86f40b89464a4a0572732675a4334ee0ed578ac9878c7dd232be3c" target="_blank" rel="noopener noreferrer">0x8d96f78b7b86f40b89464a4a05727326…</a></div>
       </div>
       <div class="j-row">
-        <span class="ag">[client]</span> <span class="ph">VERIFY</span> verifying delivery hash matches the received artifact
+        <span class="ag">[worker]</span> <span class="ph">DECIDE</span> policy passed (0.0005 native, deadline ok) — accepting
         
       </div>
       <div class="j-row">
-        <span class="ag">[client]</span> <span class="ph">VERIFY</span> hash verified ✓ — artifact is exactly what was anchored
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference complete @ block 39819253
         
       </div>
       <div class="j-row has-tx">
-        <span class="ag">[client]</span> <span class="ph">VERIFY</span> payment released to worker
-        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x2d25bc641ea899064fc7074f657c9b7b27c91cb3d1928bab7b4243092ecb4916" target="_blank" rel="noopener noreferrer">0x2d25bc641ea899064fc7074f657c9b7b…</a></div>
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference hash anchored on-chain (0xa83b464f383ae6…)
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x037c73036e611d4270f1ce288212692f7447e301a80a758b44f251a103288940" target="_blank" rel="noopener noreferrer">0x037c73036e611d4270f1ce288212692f…</a></div>
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[client]</span> <span class="ph">VERIFY</span> hash verified ✓ — payment released
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x220b98265b4b7204a03eef08eb9a566b40be3bf5b506cad84433a1475cbdb65f" target="_blank" rel="noopener noreferrer">0x220b98265b4b7204a03eef08eb9a566b…</a></div>
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[client]</span> <span class="ph">FEEDBACK</span> ERC-8004 reputation posted: 97/100 starred
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x65b7cc9995907a11d03cc63b8eae5bb421c433e94ec60df5c6b6092919bba349" target="_blank" rel="noopener noreferrer">0x65b7cc9995907a11d03cc63b8eae5bb4…</a></div>
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[worker]</span> <span class="ph">VALIDATE</span> validation requested (hash 0xa83b464f383ae6…)
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x3ee735fc410b9f0e444bd3dbd2089fbb3cc7ea6342ea1544a6473dbcf8d05897" target="_blank" rel="noopener noreferrer">0x3ee735fc410b9f0e444bd3dbd2089fbb…</a></div>
       </div>
       <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">VERIFY</span> task #1 final status: Delivered — payment received
+        <span class="ag">[validator]</span> <span class="ph">VALIDATE</span> independent integrity check: requestHash == escrow deliveryHash → score 100
+        
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[validator]</span> <span class="ph">VALIDATE</span> ValidationResponse(100) posted on-chain
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x83d24ec8940a4e8f1d50049bdb6cbb9f8a22f4e0de474f2a3ecf75b875af18e7" target="_blank" rel="noopener noreferrer">0x83d24ec8940a4e8f1d50049bdb6cbb9f…</a></div>
+      </div>
+      <div class="j-row">
+        <span class="ag">[daemon]</span> <span class="ph">CYCLE</span> ── cycle 2/2 begins ──
+        
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[client]</span> <span class="ph">POST</span> task #3 funded (0.0005 MNT)
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0xe09e1f812f2d125eff1277ea2467454c1435a4024abee5fd2ea3c59a0cb05935" target="_blank" rel="noopener noreferrer">0xe09e1f812f2d125eff1277ea2467454c…</a></div>
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">DECIDE</span> policy passed (0.0005 native, deadline ok) — accepting
         
       </div>
       <div class="j-row">
-        <span class="ag">[worker]</span> <span class="ph">DONE</span> autonomous commerce loop complete: observe → decide → execute → verify, all on-chain
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference complete @ block 39819269
         
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference hash anchored on-chain (0x8080d61bf950d7…)
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0xc40c961a4d26703e8d5469419cd627eee77349f25ec67c0212cc0840a8c6e753" target="_blank" rel="noopener noreferrer">0xc40c961a4d26703e8d5469419cd627ee…</a></div>
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[client]</span> <span class="ph">VERIFY</span> hash verified ✓ — payment released
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0xbe3319ad3cb816b154db89ebc0f7d12d730c66914f851e7ceb1c9214dd04a9a0" target="_blank" rel="noopener noreferrer">0xbe3319ad3cb816b154db89ebc0f7d12d…</a></div>
       </div>
     </div>
+  </div>
+</section>
+
+<section>
+  <h2>ERC-8004 — the hackathon's agent standard, implemented & live <span class="n">— identity · reputation · validation</span></h2>
+  <div class="grid g3">
+    <div class="card stat"><div class="v" id="e84-rep">…</div><div class="k">ERC-8004 reputation (agent #1, live read)</div></div>
+    <div class="card stat"><div class="v" id="e84-val">…</div><div class="k">validation score (independent validator, live)</div></div>
+    <div class="card stat"><div class="v">NFT #1</div><div class="k">agent identity minted via register() — registration-v1 data:URI</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+  <table>
+    <thead><tr><th>Registry</th><th>Address (Sourcify exact_match)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>IdentityRegistry</strong></td><td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/0x9ab49b9f3be00ed5f5b2452844b877636d771efc" target="_blank" rel="noopener noreferrer">0x9ab49b9f3be00ed5f5b2452844b877636d771efc</a></td></tr><tr><td><strong>ReputationRegistry</strong></td><td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f" target="_blank" rel="noopener noreferrer">0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f</a></td></tr><tr><td><strong>ValidationRegistry</strong></td><td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/0x9b90862ceb346caa320f97cad5d81afaac3ab442" target="_blank" rel="noopener noreferrer">0x9b90862ceb346caa320f97cad5d81afaac3ab442</a></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Original dependency-free implementation of the ERC-8004 draft (ERC-721 identity NFTs, giveFeedback reputation signals, 0-100 validator responses). The autonomous worker's labor, payment, reputation, and validation all live in these registries — agent performance benchmarkable straight from chain data.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Hire the agent <span class="n">— post a real task from your wallet</span></h2>
+  <div class="card">
+    <p style="font-size:14.5px;margin-bottom:12px">Connect a wallet on <b>Mantle Sepolia (5003)</b> and lock 0.0005 MNT into the AgentEscrow as an open task. Run <span class="mono">node clawkit-economy.mjs</span> from the repo and the autonomous worker will evaluate it against policy, execute, anchor its inference hash on-chain, and collect payment.</p>
+    <button id="hireBtn" style="background:var(--mnt);color:#08231a;font-family:var(--mono);font-weight:600;border:0;border-radius:8px;padding:11px 22px;font-size:14px;cursor:pointer">⛓ Post demo task (0.0005 MNT)</button>
+    <span id="hireStatus" class="note" style="margin-left:12px"></span>
   </div>
 </section>
 
@@ -499,6 +530,46 @@ async function refresh(key) {
   }
 }
 for (const k of Object.keys(NETS)) { refresh(k); setInterval(() => refresh(k), 12000); }
+// ── ERC-8004 live summaries (precomputed calldata; fixed-offset decode) ──
+const E84 = {"rep":"0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f","val":"0x9b90862ceb346caa320f97cad5d81afaac3ab442","escrow":"0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd"};
+async function e84refresh() {
+  try {
+    const enc = (sel) => sel + '0000000000000000000000000000000000000000000000000000000000000001' +
+      '0000000000000000000000000000000000000000000000000000000000000060' +
+      '0000000000000000000000000000000000000000000000000000000000000080' +
+      '0000000000000000000000000000000000000000000000000000000000000000' +
+      '0000000000000000000000000000000000000000000000000000000000000000';
+    const repOut = await rpc(NETS['mantle-sepolia'].rpc, 'eth_call', [{ to: E84.rep, data: enc('0x1b7cabd6') }, 'latest']);
+    const valOut = await rpc(NETS['mantle-sepolia'].rpc, 'eth_call', [{ to: E84.val, data: enc('0x1b7cabd6') }, 'latest']);
+    const cnt = (h) => parseInt(h.slice(2, 66), 16);
+    const avg = (h) => parseInt(h.slice(66, 130), 16);
+    document.getElementById('e84-rep').textContent = cnt(repOut) + '× · avg ' + avg(repOut) + '/100';
+    document.getElementById('e84-val').textContent = cnt(valOut) + '× · avg ' + avg(valOut) + '/100';
+  } catch (e) {
+    document.getElementById('e84-rep').textContent = 'see explorer';
+    document.getElementById('e84-val').textContent = 'see explorer';
+  }
+}
+e84refresh(); setInterval(e84refresh, 15000);
+// ── hire-the-agent: post an open escrow task from the user's wallet ──
+document.getElementById('hireBtn').onclick = async () => {
+  const S = document.getElementById('hireStatus');
+  if (!window.ethereum) { S.textContent = 'no wallet detected — install MetaMask'; return; }
+  try {
+    const [from] = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    try { await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x138b' }] }); }
+    catch (sw) { if (sw.code === 4902) await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0x138b', chainName: 'Mantle Sepolia', rpcUrls: ['https://rpc.sepolia.mantle.xyz'], nativeCurrency: { name: 'MNT', symbol: 'MNT', decimals: 18 }, blockExplorerUrls: ['https://sepolia.mantlescan.xyz'] }] }); }
+    const deadline = Math.floor(Date.now() / 1000) + 86400;
+    // create(address worker=0x0, uint40 deadline, uint40 disputeWindow=600, bytes32 taskHash=keccak("clawkit dashboard demo task"))
+    const data = '0x' + '5743b75f' +
+      '0000000000000000000000000000000000000000000000000000000000000000' +
+      deadline.toString(16).padStart(64, '0') +
+      '0000000000000000000000000000000000000000000000000000000000000258' +
+      'e447e80ffc668f35d173552af49c1cb469eff296f3134718654979c301f3ef8e';
+    const tx = await window.ethereum.request({ method: 'eth_sendTransaction', params: [{ from, to: E84.escrow, value: '0x1c6bf52634000', data }] });
+    S.innerHTML = 'task posted! <a href="https://sepolia.mantlescan.xyz/tx/' + tx + '" target="_blank" rel="noopener noreferrer">view tx</a> — the agent daemon will evaluate it';
+  } catch (e) { S.textContent = 'cancelled / error: ' + (e.message || e).toString().slice(0, 80); }
+};
 </script>
 </body>
 </html>

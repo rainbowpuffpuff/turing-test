@@ -9,6 +9,9 @@
     "AgentEscrow": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
     "StreamPay": "0xb6c2312de42b48c934ab532ccbcb80ab38a71c49",
     "InvoiceBook": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
-    "AgentRegistry": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3"
+    "AgentRegistry": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3",
+    "ERC8004IdentityRegistry": "0x9ab49b9f3be00ed5f5b2452844b877636d771efc",
+    "ERC8004ReputationRegistry": "0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f",
+    "ERC8004ValidationRegistry": "0x9b90862ceb346caa320f97cad5d81afaac3ab442"
   }
 }

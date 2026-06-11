@@ -3,7 +3,10 @@
     "AgentEscrow": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
     "StreamPay": "0xb6c2312de42b48c934ab532ccbcb80ab38a71c49",
     "InvoiceBook": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
-    "AgentRegistry": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3"
+    "AgentRegistry": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3",
+    "ERC8004IdentityRegistry": "0x9ab49b9f3be00ed5f5b2452844b877636d771efc",
+    "ERC8004ReputationRegistry": "0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f",
+    "ERC8004ValidationRegistry": "0x9b90862ceb346caa320f97cad5d81afaac3ab442"
   },
   "details": {
     "AgentEscrow": {
@@ -29,6 +32,24 @@
       "txHash": "0x5ca00d530ae0c14724706f722bc0cdebb4181494ca68198f73fd1e2b53e1f149",
       "block": 39817231,
       "gasUsed": 1347007
+    },
+    "ERC8004IdentityRegistry": {
+      "address": "0x9ab49b9f3be00ed5f5b2452844b877636d771efc",
+      "txHash": "0x8523112b4b16bdca683f4bdf668321f389963495ff9c735aeda2e8590b486ffa",
+      "block": 39819112,
+      "gasUsed": 1384134
+    },
+    "ERC8004ReputationRegistry": {
+      "address": "0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f",
+      "txHash": "0x691d9c8ef627d22e5552f925d0e09d9077ca5c97abb468d877b34d35602f1af6",
+      "block": 39819115,
+      "gasUsed": 901075
+    },
+    "ERC8004ValidationRegistry": {
+      "address": "0x9b90862ceb346caa320f97cad5d81afaac3ab442",
+      "txHash": "0x1b547863ebb07bb1f2dcdb7af94000ee8ff6b0f8f2ad75d792367da9606c739f",
+      "block": 39819119,
+      "gasUsed": 771710
     }
   }
 }

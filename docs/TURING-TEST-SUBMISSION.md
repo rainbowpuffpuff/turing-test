@@ -5,7 +5,7 @@
 **BUIDL name:** ClawKit — Agent Economy Skills for Mantle
 
 **One-sentence product description (Byreal requirement):**
-ClawKit extends RealClaw/OpenClaw agents with 10 Mantle-compatible skills (60 tools) so autonomous agents can pay, earn, hire, bill, identify, and observe — with every decision verifiable on-chain.
+ClawKit extends RealClaw/OpenClaw agents with 11 Mantle-compatible skills (67 tools) — including a live ERC-8004 implementation — so autonomous agents can pay, earn, hire, bill, identify, and observe — with every decision verifiable on-chain.
 
 **Tracks (max 2):** Agentic Wallets & Economy (primary) · AI DevTools (secondary)
 
@@ -39,6 +39,18 @@ Install into RealClaw/OpenClaw (`npx skills add rainbowpuffpuff/turing-test`) or
 
 Every decision is journaled with a reason; every action is a Mantle transaction. Agent performance is benchmarkable **directly from chain data** — exactly the on-chain AI benchmarking thesis of this hackathon.
 
+### ERC-8004 — the hackathon's announced standard, implemented and LIVE
+
+This hackathon's defining features name **ERC-8004 agent identity NFTs** and **on-chain AI benchmarking**. ClawKit ships an original, dependency-free implementation of the ERC-8004 draft — all three registries deployed and Sourcify-verified (exact_match) on Mantle Sepolia:
+
+| Registry | Address |
+|---|---|
+| IdentityRegistry (ERC-721 identity NFTs) | 0x9ab49b9f3be00ed5f5b2452844b877636d771efc |
+| ReputationRegistry (giveFeedback signals) | 0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f |
+| ValidationRegistry (0-100 validator responses) | 0x9b90862ceb346caa320f97cad5d81afaac3ab442 |
+
+And it is **used, not just deployed**: the economy benchmark (`clawkit-economy.mjs`) runs THREE independent agents — the worker mints identity NFT **agentId #1** (registration-v1 file stored as a fully on-chain data: URI), performs escrowed labor with inference hashes anchored on-chain, the client (a separate key — the spec forbids owner self-feedback, and our contract enforces it) posts **97/100 reputation feedback**, and an independent validator posts **100/100 ValidationResponses** after recomputing artifact integrity. The benchmark reads back from chain: reputation 2× avg 97, validations 2× avg 100. Agent performance, benchmarked on Mantle, in the standard the hackathon announced.
+
 ### Scorecard mapping — Part A (Mantle general, 50 pts)
 
 **Technical (15):** Zero-runtime-dependency architecture: own EVM stack (RLP, EIP-1559 signing, ABI codec, EIP-712 — all verified against known-answer test vectors) over vendored audited @noble primitives; from-scratch MCP server (~1,200 auditable lines total runtime). JSON-schema validation on every tool call; structured `{ok,error}` results; smoke tests per skill; runs end-to-end on Mantle Sepolia (deployments + live demo log below).
@@ -69,7 +81,7 @@ chain-sentinel (tx_inspect with Mantle gas accounting, calldata decoding, event 
 
 - ✅ Smart contracts deployed on Mantle Sepolia (addresses below)
 - ✅ Contracts verified: Sourcify **exact_match** on chain 5003 for all four (sourcify.dev/server/v2/contract/5003/<address>); Blockscout import pending (their API was down at submission time)
-- ✅ AI-powered function callable on-chain: `AgentEscrow.deliver(inferenceResultHash)` — inference result written on-chain by the autonomous worker (journal + tx hashes in repo)
+- ✅ AI-powered functions callable on-chain: `AgentEscrow.deliver(inferenceResultHash)` + ERC-8004 `validationRequest/validationResponse` — inference results and independent validation scores written on-chain by autonomous agents (journals + tx hashes in repo)
 - ✅ Public frontend (dashboard URL above — not localhost)
 - ✅ Deployment addresses in this submission
 - ✅ Demo video ≥ 2 min
@@ -83,6 +95,9 @@ chain-sentinel (tx_inspect with Mantle gas accounting, calldata decoding, event 
 | StreamPay | 0xb6c2312de42b48c934ab532ccbcb80ab38a71c49 | 0xd5bfc0dbbeb6906c3e6b4329ec20f9ed7961adf9c0b9ce770f3bdf4722e1d4db |
 | InvoiceBook | 0x8a026720e7d83737a286c31f5eaaf8283751e96e | 0xf2693dec25fe84c04bc8b204ce54847063f44c19cb7e0955df00c8d35e8b2edb |
 | AgentRegistry | 0x204ec9f83a804672121d946d3da7f66b5c7b2cc3 | 0x5ca00d530ae0c14724706f722bc0cdebb4181494ca68198f73fd1e2b53e1f149 |
-| AgentToken | bytecode ships in-skill; deployed per-use (live instance on Pharos: 0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e) | — |
+| ERC8004IdentityRegistry | 0x9ab49b9f3be00ed5f5b2452844b877636d771efc | 0x8523112b4b16bdca683f4bdf668321f389963495ff9c735aeda2e8590b486ffa |
+| ERC8004ReputationRegistry | 0x6fcb116f9e2edaacefbce3fc1dbc582a5159b37f | 0x691d9c8ef627d22e5552f925d0e09d9077ca5c97abb468d877b34d35602f1af6 |
+| ERC8004ValidationRegistry | 0x9b90862ceb346caa320f97cad5d81afaac3ab442 | 0x1b547863ebb07bb1f2dcdb7af94000ee8ff6b0f8f2ad75d792367da9606c739f |
+| AgentToken | bytecode ships in-skill; deployed per-use (live instance on Pharos) | — |
 
 *Portability proof: the same suite runs on Pharos Atlantic testnet (23 demo transactions) by switching one parameter — chain-agnostic infrastructure, Mantle-first.*

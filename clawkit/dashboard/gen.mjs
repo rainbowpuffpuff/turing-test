@@ -10,7 +10,7 @@ const demoLog = JSON.parse(readFileSync(`${ROOT}/meta/demo-log.json`, 'utf8'));
 const pharosDep = JSON.parse(readFileSync(`${ROOT}/deployments.json`, 'utf8'));
 const mantleDepPath = `${ROOT}/deployments-mantle.json`;
 const mantleDep = existsSync(mantleDepPath) ? JSON.parse(readFileSync(mantleDepPath, 'utf8')) : null;
-const journalPath = `${ROOT}/meta/agent-journal-mantle-sepolia.json`;
+const journalPath = `${ROOT}/meta/economy-journal-mantle-sepolia.json`;
 const journalFallback = `${ROOT}/meta/agent-journal-atlantic-testnet.json`;
 const journal = existsSync(journalPath) ? JSON.parse(readFileSync(journalPath, 'utf8'))
   : existsSync(journalFallback) ? JSON.parse(readFileSync(journalFallback, 'utf8')) : { journal: [] };
@@ -175,6 +175,33 @@ footer{padding:42px 0 64px;color:var(--dim);font-size:14px}
 </section>
 
 <section>
+  <h2>ERC-8004 — the hackathon's agent standard, implemented & live <span class="n">— identity · reputation · validation</span></h2>
+  <div class="grid g3">
+    <div class="card stat"><div class="v" id="e84-rep">…</div><div class="k">ERC-8004 reputation (agent #1, live read)</div></div>
+    <div class="card stat"><div class="v" id="e84-val">…</div><div class="k">validation score (independent validator, live)</div></div>
+    <div class="card stat"><div class="v">NFT #1</div><div class="k">agent identity minted via register() — registration-v1 data:URI</div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+  <table>
+    <thead><tr><th>Registry</th><th>Address (Sourcify exact_match)</th></tr></thead>
+    <tbody>
+      ${['ERC8004IdentityRegistry','ERC8004ReputationRegistry','ERC8004ValidationRegistry'].map((c)=>`<tr><td><strong>${c.replace('ERC8004','')}</strong></td><td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/${mantleContracts[c]}" target="_blank" rel="noopener noreferrer">${mantleContracts[c] ?? ''}</a></td></tr>`).join('')}
+    </tbody>
+  </table>
+  <p class="note">Original dependency-free implementation of the ERC-8004 draft (ERC-721 identity NFTs, giveFeedback reputation signals, 0-100 validator responses). The autonomous worker's labor, payment, reputation, and validation all live in these registries — agent performance benchmarkable straight from chain data.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Hire the agent <span class="n">— post a real task from your wallet</span></h2>
+  <div class="card">
+    <p style="font-size:14.5px;margin-bottom:12px">Connect a wallet on <b>Mantle Sepolia (5003)</b> and lock 0.0005 MNT into the AgentEscrow as an open task. Run <span class="mono">node clawkit-economy.mjs</span> from the repo and the autonomous worker will evaluate it against policy, execute, anchor its inference hash on-chain, and collect payment.</p>
+    <button id="hireBtn" style="background:var(--mnt);color:#08231a;font-family:var(--mono);font-weight:600;border:0;border-radius:8px;padding:11px 22px;font-size:14px;cursor:pointer">⛓ Post demo task (0.0005 MNT)</button>
+    <span id="hireStatus" class="note" style="margin-left:12px"></span>
+  </div>
+</section>
+
+<section>
   <h2>Skill catalog <span class="n">— install into RealClaw/OpenClaw or any MCP runtime</span></h2>
   <div class="kbd"># RealClaw / OpenClaw (skills install from the repo)
 npx skills add rainbowpuffpuff/turing-test --skill escrow,sentinel,payroll
@@ -252,6 +279,46 @@ async function refresh(key) {
   }
 }
 for (const k of Object.keys(NETS)) { refresh(k); setInterval(() => refresh(k), 12000); }
+// ── ERC-8004 live summaries (precomputed calldata; fixed-offset decode) ──
+const E84 = ${JSON.stringify({ rep: mantleContracts['ERC8004ReputationRegistry'], val: mantleContracts['ERC8004ValidationRegistry'], escrow: mantleContracts['AgentEscrow'] })};
+async function e84refresh() {
+  try {
+    const enc = (sel) => sel + '0000000000000000000000000000000000000000000000000000000000000001' +
+      '0000000000000000000000000000000000000000000000000000000000000060' +
+      '0000000000000000000000000000000000000000000000000000000000000080' +
+      '0000000000000000000000000000000000000000000000000000000000000000' +
+      '0000000000000000000000000000000000000000000000000000000000000000';
+    const repOut = await rpc(NETS['mantle-sepolia'].rpc, 'eth_call', [{ to: E84.rep, data: enc('0x1b7cabd6') }, 'latest']);
+    const valOut = await rpc(NETS['mantle-sepolia'].rpc, 'eth_call', [{ to: E84.val, data: enc('0x1b7cabd6') }, 'latest']);
+    const cnt = (h) => parseInt(h.slice(2, 66), 16);
+    const avg = (h) => parseInt(h.slice(66, 130), 16);
+    document.getElementById('e84-rep').textContent = cnt(repOut) + '× · avg ' + avg(repOut) + '/100';
+    document.getElementById('e84-val').textContent = cnt(valOut) + '× · avg ' + avg(valOut) + '/100';
+  } catch (e) {
+    document.getElementById('e84-rep').textContent = 'see explorer';
+    document.getElementById('e84-val').textContent = 'see explorer';
+  }
+}
+e84refresh(); setInterval(e84refresh, 15000);
+// ── hire-the-agent: post an open escrow task from the user's wallet ──
+document.getElementById('hireBtn').onclick = async () => {
+  const S = document.getElementById('hireStatus');
+  if (!window.ethereum) { S.textContent = 'no wallet detected — install MetaMask'; return; }
+  try {
+    const [from] = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    try { await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x138b' }] }); }
+    catch (sw) { if (sw.code === 4902) await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{ chainId: '0x138b', chainName: 'Mantle Sepolia', rpcUrls: ['https://rpc.sepolia.mantle.xyz'], nativeCurrency: { name: 'MNT', symbol: 'MNT', decimals: 18 }, blockExplorerUrls: ['https://sepolia.mantlescan.xyz'] }] }); }
+    const deadline = Math.floor(Date.now() / 1000) + 86400;
+    // create(address worker=0x0, uint40 deadline, uint40 disputeWindow=600, bytes32 taskHash=keccak("clawkit dashboard demo task"))
+    const data = '0x' + '5743b75f' +
+      '0000000000000000000000000000000000000000000000000000000000000000' +
+      deadline.toString(16).padStart(64, '0') +
+      '0000000000000000000000000000000000000000000000000000000000000258' +
+      'e447e80ffc668f35d173552af49c1cb469eff296f3134718654979c301f3ef8e';
+    const tx = await window.ethereum.request({ method: 'eth_sendTransaction', params: [{ from, to: E84.escrow, value: '0x1c6bf52634000', data }] });
+    S.innerHTML = 'task posted! <a href="https://sepolia.mantlescan.xyz/tx/' + tx + '" target="_blank" rel="noopener noreferrer">view tx</a> — the agent daemon will evaluate it';
+  } catch (e) { S.textContent = 'cancelled / error: ' + (e.message || e).toString().slice(0, 80); }
+};
 </script>
 </body>
 </html>`;

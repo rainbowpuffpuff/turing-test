@@ -1,0 +1,37 @@
+{
+  "networks": [
+    {
+      "name": "atlantic-testnet",
+      "rpcUrl": "https://atlantic.dplabs-internal.com",
+      "chainId": 688689,
+      "explorerUrl": "https://atlantic.pharosscan.xyz/",
+      "explorerApiUrl": "https://api.socialscan.io/pharos-atlantic-testnet",
+      "nativeToken": "PHRS"
+    },
+    {
+      "name": "mainnet",
+      "rpcUrl": "https://rpc.pharos.xyz",
+      "chainId": 1672,
+      "explorerUrl": "https://www.pharosscan.xyz/",
+      "explorerApiUrl": "https://api.socialscan.io/pharos-mainnet",
+      "nativeToken": "PROS"
+    },
+    {
+      "name": "mantle-sepolia",
+      "rpcUrl": "https://rpc.sepolia.mantle.xyz",
+      "chainId": 5003,
+      "explorerUrl": "https://sepolia.mantlescan.xyz/",
+      "explorerApiUrl": "https://api.etherscan.io/v2/api?chainid=5003",
+      "nativeToken": "MNT"
+    },
+    {
+      "name": "mantle",
+      "rpcUrl": "https://rpc.mantle.xyz",
+      "chainId": 5000,
+      "explorerUrl": "https://mantlescan.xyz/",
+      "explorerApiUrl": "https://api.etherscan.io/v2/api?chainid=5000",
+      "nativeToken": "MNT"
+    }
+  ],
+  "defaultNetwork": "atlantic-testnet"
+}

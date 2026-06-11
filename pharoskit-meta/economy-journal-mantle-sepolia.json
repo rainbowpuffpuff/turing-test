@@ -1,0 +1,168 @@
+{
+  "network": "mantle-sepolia",
+  "cycles": 2,
+  "roles": {
+    "worker": "0xc5f02b179A156414b72Af7d2E5998Ac754F69a09",
+    "client": "0xB07A3cD4bba440562bf9A73E1A3c771d6Da23f2b",
+    "validator": "0xcCcF57cfEe2220117962277c9771150D194632aA"
+  },
+  "journal": [
+    {
+      "at": "2026-06-11T13:06:10.750Z",
+      "agent": "worker",
+      "phase": "IDENTITY",
+      "thought": "minting ERC-8004 identity NFT (registration-v1 file as on-chain data:URI)"
+    },
+    {
+      "at": "2026-06-11T13:06:15.474Z",
+      "agent": "worker",
+      "phase": "IDENTITY",
+      "thought": "agentId #1 minted in eip155:5003:0x9ab49b9f3be00ed5f5b2452844b877636d771efc",
+      "txHash": "0xa50af2d07d692b46d4923d618ff3720690207ad74843431e0968672d1bffc442"
+    },
+    {
+      "at": "2026-06-11T13:06:15.474Z",
+      "agent": "daemon",
+      "phase": "CYCLE",
+      "thought": "── cycle 1/2 begins ──"
+    },
+    {
+      "at": "2026-06-11T13:06:20.206Z",
+      "agent": "client",
+      "phase": "POST",
+      "thought": "task #2 funded (0.0005 MNT)",
+      "txHash": "0x8d96f78b7b86f40b89464a4a0572732675a4334ee0ed578ac9878c7dd232be3c"
+    },
+    {
+      "at": "2026-06-11T13:06:20.496Z",
+      "agent": "worker",
+      "phase": "DECIDE",
+      "thought": "policy passed (0.0005 native, deadline ok) — accepting"
+    },
+    {
+      "at": "2026-06-11T13:06:21.301Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference complete @ block 39819253"
+    },
+    {
+      "at": "2026-06-11T13:06:26.033Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference hash anchored on-chain (0xa83b464f383ae6…)",
+      "txHash": "0x037c73036e611d4270f1ce288212692f7447e301a80a758b44f251a103288940"
+    },
+    {
+      "at": "2026-06-11T13:06:30.926Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "hash verified ✓ — payment released",
+      "txHash": "0x220b98265b4b7204a03eef08eb9a566b40be3bf5b506cad84433a1475cbdb65f"
+    },
+    {
+      "at": "2026-06-11T13:06:35.680Z",
+      "agent": "client",
+      "phase": "FEEDBACK",
+      "thought": "ERC-8004 reputation posted: 97/100 starred",
+      "txHash": "0x65b7cc9995907a11d03cc63b8eae5bb421c433e94ec60df5c6b6092919bba349"
+    },
+    {
+      "at": "2026-06-11T13:06:40.340Z",
+      "agent": "worker",
+      "phase": "VALIDATE",
+      "thought": "validation requested (hash 0xa83b464f383ae6…)",
+      "txHash": "0x3ee735fc410b9f0e444bd3dbd2089fbb3cc7ea6342ea1544a6473dbcf8d05897"
+    },
+    {
+      "at": "2026-06-11T13:06:40.340Z",
+      "agent": "validator",
+      "phase": "VALIDATE",
+      "thought": "independent integrity check: requestHash == escrow deliveryHash → score 100"
+    },
+    {
+      "at": "2026-06-11T13:06:45.135Z",
+      "agent": "validator",
+      "phase": "VALIDATE",
+      "thought": "ValidationResponse(100) posted on-chain",
+      "txHash": "0x83d24ec8940a4e8f1d50049bdb6cbb9f8a22f4e0de474f2a3ecf75b875af18e7"
+    },
+    {
+      "at": "2026-06-11T13:06:47.636Z",
+      "agent": "daemon",
+      "phase": "CYCLE",
+      "thought": "── cycle 2/2 begins ──"
+    },
+    {
+      "at": "2026-06-11T13:06:53.031Z",
+      "agent": "client",
+      "phase": "POST",
+      "thought": "task #3 funded (0.0005 MNT)",
+      "txHash": "0xe09e1f812f2d125eff1277ea2467454c1435a4024abee5fd2ea3c59a0cb05935"
+    },
+    {
+      "at": "2026-06-11T13:06:53.288Z",
+      "agent": "worker",
+      "phase": "DECIDE",
+      "thought": "policy passed (0.0005 native, deadline ok) — accepting"
+    },
+    {
+      "at": "2026-06-11T13:06:54.068Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference complete @ block 39819269"
+    },
+    {
+      "at": "2026-06-11T13:06:58.939Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference hash anchored on-chain (0x8080d61bf950d7…)",
+      "txHash": "0xc40c961a4d26703e8d5469419cd627eee77349f25ec67c0212cc0840a8c6e753"
+    },
+    {
+      "at": "2026-06-11T13:07:04.162Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "hash verified ✓ — payment released",
+      "txHash": "0xbe3319ad3cb816b154db89ebc0f7d12d730c66914f851e7ceb1c9214dd04a9a0"
+    },
+    {
+      "at": "2026-06-11T13:07:08.918Z",
+      "agent": "client",
+      "phase": "FEEDBACK",
+      "thought": "ERC-8004 reputation posted: 97/100 starred",
+      "txHash": "0xa3b82d99eea9ae836cd88d9fcd563255f28bf653dfd4c4eed91335b656bbb5f4"
+    },
+    {
+      "at": "2026-06-11T13:07:13.744Z",
+      "agent": "worker",
+      "phase": "VALIDATE",
+      "thought": "validation requested (hash 0x8080d61bf950d7…)",
+      "txHash": "0xbd2109b3b10a4f26cec79de2132cbe3cf0480bf6cd44ba7fa7b663286ffc226d"
+    },
+    {
+      "at": "2026-06-11T13:07:13.744Z",
+      "agent": "validator",
+      "phase": "VALIDATE",
+      "thought": "independent integrity check: requestHash == escrow deliveryHash → score 100"
+    },
+    {
+      "at": "2026-06-11T13:07:18.332Z",
+      "agent": "validator",
+      "phase": "VALIDATE",
+      "thought": "ValidationResponse(100) posted on-chain",
+      "txHash": "0x97c3956542025b086c257b2e4cdfe06652701fa190745aaa479286f4f1adb93d"
+    },
+    {
+      "at": "2026-06-11T13:07:21.318Z",
+      "agent": "daemon",
+      "phase": "BENCHMARK",
+      "thought": "on-chain record → reputation: 2× avg 97 | validations: 2× avg 100"
+    },
+    {
+      "at": "2026-06-11T13:07:21.318Z",
+      "agent": "daemon",
+      "phase": "DONE",
+      "thought": "agent economy benchmark complete — identity, labor, payment, reputation, validation: all on-chain"
+    }
+  ]
+}
