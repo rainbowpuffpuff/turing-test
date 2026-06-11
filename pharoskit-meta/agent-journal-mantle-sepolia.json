@@ -1,0 +1,112 @@
+{
+  "network": "mantle-sepolia",
+  "role": "demo",
+  "journal": [
+    {
+      "at": "2026-06-11T12:04:22.189Z",
+      "agent": "worker",
+      "phase": "IDENTITY",
+      "thought": "registering on-chain identity (idempotent)"
+    },
+    {
+      "at": "2026-06-11T12:04:22.780Z",
+      "agent": "worker",
+      "phase": "IDENTITY",
+      "thought": "registration failed (RPC eth_estimateGas: execution reverted) — continuing without identity (graceful degradation)"
+    },
+    {
+      "at": "2026-06-11T12:04:22.780Z",
+      "agent": "client",
+      "phase": "POST",
+      "thought": "locking payment for task: gas-optimization analysis report"
+    },
+    {
+      "at": "2026-06-11T12:04:27.411Z",
+      "agent": "client",
+      "phase": "POST",
+      "thought": "task #1 funded and assigned",
+      "txHash": "0x012f94c7545cf99ed041db64b8992abc2f2109f0af9a515fb7aab4e81f0b745e",
+      "escrowId": 1
+    },
+    {
+      "at": "2026-06-11T12:04:27.411Z",
+      "agent": "worker",
+      "phase": "OBSERVE",
+      "thought": "reading escrow #1 state from chain"
+    },
+    {
+      "at": "2026-06-11T12:04:27.647Z",
+      "agent": "worker",
+      "phase": "RECOVER",
+      "thought": "read looks stale (empty struct from lagging RPC node) — re-reading in 3s"
+    },
+    {
+      "at": "2026-06-11T12:04:30.877Z",
+      "agent": "worker",
+      "phase": "OBSERVE",
+      "thought": "found task: 0.00001 native, deadline 2026-06-11T12:34:22.000Z, status Accepted"
+    },
+    {
+      "at": "2026-06-11T12:04:30.877Z",
+      "agent": "worker",
+      "phase": "DECIDE",
+      "thought": "policy check PASSED (price ≥ 0.000005, deadline runway OK) — accepting"
+    },
+    {
+      "at": "2026-06-11T12:04:30.877Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "performing chain-analysis inference (live network observation)"
+    },
+    {
+      "at": "2026-06-11T12:04:31.720Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference complete → recommendation: \"NORMAL\" @ block 39817398"
+    },
+    {
+      "at": "2026-06-11T12:04:31.720Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "anchoring inference result hash on-chain via deliver()"
+    },
+    {
+      "at": "2026-06-11T12:04:36.404Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference result anchored on-chain (hash=0x6bd1671ab42ef140…)",
+      "txHash": "0xb3a7abc917bc811780af47b66fab958313c6ded1b4c5f57e3ffece66dffb60fa"
+    },
+    {
+      "at": "2026-06-11T12:04:36.404Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "verifying delivery hash matches the received artifact"
+    },
+    {
+      "at": "2026-06-11T12:04:36.641Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "hash verified ✓ — artifact is exactly what was anchored"
+    },
+    {
+      "at": "2026-06-11T12:04:41.600Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "payment released to worker",
+      "txHash": "0x2d25bc641ea899064fc7074f657c9b7b27c91cb3d1928bab7b4243092ecb4916"
+    },
+    {
+      "at": "2026-06-11T12:04:41.841Z",
+      "agent": "worker",
+      "phase": "VERIFY",
+      "thought": "task #1 final status: Delivered — payment received"
+    },
+    {
+      "at": "2026-06-11T12:04:41.841Z",
+      "agent": "worker",
+      "phase": "DONE",
+      "thought": "autonomous commerce loop complete: observe → decide → execute → verify, all on-chain"
+    }
+  ]
+}

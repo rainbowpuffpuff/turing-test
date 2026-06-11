@@ -74,7 +74,7 @@ server.tool(
     properties: {
       list: { type: 'string', minLength: 3 },
       asset: { type: 'string', description: 'default "native"' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['list'],
   },
@@ -133,7 +133,7 @@ server.tool(
       list: { type: 'string', minLength: 3 },
       asset: { type: 'string' },
       confirm: { type: 'boolean', description: 'must be true — explicit execution consent' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['list', 'confirm'],
   },
@@ -209,7 +209,7 @@ server.tool(
     type: 'object',
     properties: {
       txHashes: { type: 'array', items: { type: 'string', pattern: '^0x[0-9a-fA-F]{64}$' }, minItems: 1, maxItems: 100 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['txHashes'],
   },

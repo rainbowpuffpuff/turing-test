@@ -31,7 +31,9 @@ function sessionSpent(assetKey) {
 function netNameFromId(networkId) {
   if (networkId === 'eip155:688689') return 'atlantic-testnet';
   if (networkId === 'eip155:1672') return 'mainnet';
-  throw new Error(`unsupported x402 network ${networkId} — this skill targets Pharos (eip155:688689 / eip155:1672)`);
+  if (networkId === 'eip155:5003') return 'mantle-sepolia';
+  if (networkId === 'eip155:5000') return 'mantle';
+  throw new Error(`unsupported x402 network ${networkId} — supported: Pharos (eip155:688689/1672) and Mantle (eip155:5003/5000)`);
 }
 
 async function payOnChain(req, networkName) {

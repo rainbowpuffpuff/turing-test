@@ -62,7 +62,7 @@ server.tool(
       address: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       cursor: { type: 'object', description: 'previous {block, balance, nonce} to diff against' },
       scanBlocks: { type: 'integer', minimum: 10, maximum: 100000, description: 'Transfer-log lookback when no cursor (default 5000)' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['address'],
   },
@@ -125,7 +125,7 @@ server.tool(
       fromBlock: { type: 'integer', minimum: 0, description: 'default latest-5000' },
       toBlock: { type: 'integer', minimum: 0, description: 'default latest' },
       maxResults: { type: 'integer', minimum: 1, maximum: 200, description: 'default 50' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['contract'],
   },
@@ -159,7 +159,7 @@ server.tool(
       addresses: { type: 'array', items: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' }, minItems: 1, maxItems: 10 },
       tokens: { type: 'array', items: { type: 'string' }, description: 'symbols or 0x addresses; default = canonical registry' },
       minNative: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$', description: 'alert if native balance below this' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['addresses'],
   },
@@ -200,7 +200,7 @@ server.tool(
     type: 'object',
     properties: {
       txHash: { type: 'string', pattern: '^0x[0-9a-fA-F]{64}$' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['txHash'],
   },
@@ -243,7 +243,7 @@ server.tool(
 server.tool(
   'chain_pulse',
   'Network health snapshot: latest block, observed block interval, base fee, gas price, and chain id sanity check. Use before batches of transactions.',
-  { type: 'object', properties: { network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } } },
+  { type: 'object', properties: { network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } } },
   async ({ network }) => {
     const rpc = rpcFor(network);
     const net = getNetwork(network);

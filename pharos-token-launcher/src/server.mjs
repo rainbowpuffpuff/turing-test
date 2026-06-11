@@ -56,7 +56,7 @@ server.tool(
       decimals: { type: 'integer', minimum: 0, maximum: 18, description: 'default 18' },
       cap: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$', description: 'max supply in human units; "0" = uncapped' },
       initialMint: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$', description: 'minted to you at deploy (default "0")' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['name', 'symbol'],
   },
@@ -93,7 +93,7 @@ server.tool(
     properties: {
       token: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       balancesOf: { type: 'array', items: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' }, maxItems: 10 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['token'],
   },
@@ -139,7 +139,7 @@ server.tool(
       token: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       to: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['token', 'to', 'amount'],
   },
@@ -160,7 +160,7 @@ server.tool(
     properties: {
       token: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['token', 'amount'],
   },
@@ -182,7 +182,7 @@ server.tool(
       token: { type: 'string', description: '0x address or symbol (USDC, WPHRS, ...)' },
       to: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['token', 'to', 'amount'],
   },
@@ -210,7 +210,7 @@ server.tool(
     properties: {
       token: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       confirm: { type: 'boolean' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['token', 'confirm'],
   },
@@ -230,14 +230,14 @@ server.tool(
     type: 'object',
     properties: {
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['amount'],
   },
   async ({ amount, network }) => {
     const wallet = walletFor(network);
     const net = getNetwork(network);
-    const w = TOKENS[net.name]?.WPHRS ?? TOKENS[net.name]?.WPROS;
+    const w = TOKENS[net.name]?.WPHRS ?? TOKENS[net.name]?.WPROS ?? TOKENS[net.name]?.WMNT;
     if (!w) return { ok: false, error: 'no wrapped-native token known on this network' };
     const res = await sendAndReport(wallet, w.address, encodeCall('deposit()'), parseUnits(amount, 18), network);
     return res.ok ? { ok: true, wrapped: `${amount} ${net.nativeToken} → ${w.symbol}`, txHash: res.txHash, explorer: res.explorer } : { ok: false, error: 'deposit reverted', ...res };
@@ -252,14 +252,14 @@ server.tool(
     type: 'object',
     properties: {
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['amount'],
   },
   async ({ amount, network }) => {
     const wallet = walletFor(network);
     const net = getNetwork(network);
-    const w = TOKENS[net.name]?.WPHRS ?? TOKENS[net.name]?.WPROS;
+    const w = TOKENS[net.name]?.WPHRS ?? TOKENS[net.name]?.WPROS ?? TOKENS[net.name]?.WMNT;
     if (!w) return { ok: false, error: 'no wrapped-native token known on this network' };
     const res = await sendAndReport(wallet, w.address, encodeCall('withdraw(uint256)', [parseUnits(amount, 18)]), 0n, network);
     return res.ok ? { ok: true, unwrapped: `${amount} ${w.symbol} → ${net.nativeToken}`, txHash: res.txHash, explorer: res.explorer } : { ok: false, error: 'withdraw reverted (balance?)', ...res };

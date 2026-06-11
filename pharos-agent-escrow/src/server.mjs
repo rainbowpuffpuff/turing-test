@@ -93,7 +93,7 @@ server.tool(
       deadlineMinutes: { type: 'integer', minimum: 1, description: 'time for worker to deliver (default 60)' },
       disputeWindowMinutes: { type: 'integer', minimum: 0, description: 'client dispute window after delivery (default 30)' },
       taskSpec: { type: 'string', description: 'task description — hashed on-chain as taskHash' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['amount', 'taskSpec'],
   },
@@ -116,7 +116,7 @@ server.tool(
 server.tool(
   'accept_task',
   'Accept an open escrow task as the worker (your PHAROS_PRIVATE_KEY address becomes the designated worker).',
-  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['escrowId'] },
+  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['escrowId'] },
   async ({ escrowId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, escrowAddress(network), encodeCall('accept(uint256)', [escrowId]), 0n, network);
@@ -134,7 +134,7 @@ server.tool(
       escrowId: { type: 'integer', minimum: 0 },
       deliveryContent: { type: 'string', description: 'artifact content to hash' },
       deliveryHash: { type: 'string', pattern: '^0x[0-9a-fA-F]{64}$', description: 'alternative: precomputed hash' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['escrowId'],
   },
@@ -151,7 +151,7 @@ server.tool(
 server.tool(
   'release_payment',
   'As the client, release escrowed funds to the worker (accept the delivery).',
-  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['escrowId'] },
+  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['escrowId'] },
   async ({ escrowId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, escrowAddress(network), encodeCall('release(uint256)', [escrowId]), 0n, network);
@@ -163,7 +163,7 @@ server.tool(
 server.tool(
   'claim_after_window',
   'As the worker, self-claim payment after the dispute window passed with no dispute.',
-  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['escrowId'] },
+  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['escrowId'] },
   async ({ escrowId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, escrowAddress(network), encodeCall('claimAfterWindow(uint256)', [escrowId]), 0n, network);
@@ -175,7 +175,7 @@ server.tool(
 server.tool(
   'refund_expired',
   'As the client, reclaim funds from an unaccepted task or one whose deadline passed without delivery.',
-  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['escrowId'] },
+  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['escrowId'] },
   async ({ escrowId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, escrowAddress(network), encodeCall('refund(uint256)', [escrowId]), 0n, network);
@@ -187,7 +187,7 @@ server.tool(
 server.tool(
   'open_dispute',
   'As the client, open a dispute during the dispute window after delivery.',
-  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['escrowId'] },
+  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['escrowId'] },
   async ({ escrowId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, escrowAddress(network), encodeCall('dispute(uint256)', [escrowId]), 0n, network);
@@ -204,7 +204,7 @@ server.tool(
     properties: {
       escrowId: { type: 'integer', minimum: 0 },
       workerShareBps: { type: 'integer', minimum: 0, maximum: 10000 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['escrowId', 'workerShareBps'],
   },
@@ -221,7 +221,7 @@ server.tool(
 server.tool(
   'get_escrow',
   'Read the full state of an escrow by id.',
-  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['escrowId'] },
+  { type: 'object', properties: { escrowId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['escrowId'] },
   async ({ escrowId, network }) => {
     const rpc = rpcFor(network);
     const addr = escrowAddress(network);

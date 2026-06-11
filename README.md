@@ -1,16 +1,38 @@
 <div align="center">
 
-# PharosKit
+# ClawKit · PharosKit
 
-**10 composable Skill modules for AI agents on [Pharos](https://pharos.xyz)**
+**The agent-economy skill suite — live on Mantle Sepolia AND Pharos Atlantic.**
 
-*Built for the Skill-to-Agent Dual Cascade Hackathon — Phase 1 (Skill Hackathon), June 2026*
-
-`MCP servers` · `zero runtime dependencies` · `5 original contracts deployed` · `23 live testnet transactions` · `MIT`
+*The Turing Test Hackathon 2026 (Mantle) · Skill-to-Agent Dual Cascade Hackathon (Pharos)*
 
 </div>
 
 ---
+
+## 🟢 ClawKit on Mantle (Turing Test Hackathon submission)
+
+**Extends RealClaw/OpenClaw with Mantle-compatible skills** — install the suite the same way Byreal's own skills install:
+
+```bash
+npx skills add rainbowpuffpuff/turing-test
+```
+
+**Deployed & Sourcify-verified (exact_match) on Mantle Sepolia, chainId 5003:**
+
+| Contract | Address |
+|---|---|
+| AgentEscrow | [`0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd`](https://sepolia.mantlescan.xyz/address/0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd) |
+| StreamPay | [`0xb6c2312de42b48c934ab532ccbcb80ab38a71c49`](https://sepolia.mantlescan.xyz/address/0xb6c2312de42b48c934ab532ccbcb80ab38a71c49) |
+| InvoiceBook | [`0x8a026720e7d83737a286c31f5eaaf8283751e96e`](https://sepolia.mantlescan.xyz/address/0x8a026720e7d83737a286c31f5eaaf8283751e96e) |
+| AgentRegistry | [`0x204ec9f83a804672121d946d3da7f66b5c7b2cc3`](https://sepolia.mantlescan.xyz/address/0x204ec9f83a804672121d946d3da7f66b5c7b2cc3) |
+
+Same addresses as the Pharos deployments — deterministic CREATE, chain-portable by design.
+
+**Autonomous agent** ([`clawkit/clawkit-agent.mjs`](clawkit/clawkit-agent.mjs)): OBSERVE → DECIDE (policy engine with refusals) → EXECUTE (inference result hash **anchored on-chain** via `deliver()`) → VERIFY (cryptographic) → RECOVER (stale-read retry, graceful degradation). Full decision journals in [`pharoskit-meta/`](pharoskit-meta/). Live dashboard + submission details: [`docs/TURING-TEST-SUBMISSION.md`](docs/TURING-TEST-SUBMISSION.md).
+
+---
+
 
 ## The suite
 

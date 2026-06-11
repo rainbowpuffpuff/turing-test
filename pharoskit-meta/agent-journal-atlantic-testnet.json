@@ -1,0 +1,106 @@
+{
+  "network": "atlantic-testnet",
+  "role": "demo",
+  "journal": [
+    {
+      "at": "2026-06-10T20:44:59.063Z",
+      "agent": "worker",
+      "phase": "IDENTITY",
+      "thought": "registering on-chain identity (idempotent)"
+    },
+    {
+      "at": "2026-06-10T20:45:00.893Z",
+      "agent": "worker",
+      "phase": "IDENTITY",
+      "thought": "registration failed (RPC eth_estimateGas: execution reverted: ) — continuing without identity (graceful degradation)"
+    },
+    {
+      "at": "2026-06-10T20:45:00.893Z",
+      "agent": "client",
+      "phase": "POST",
+      "thought": "locking payment for task: gas-optimization analysis report"
+    },
+    {
+      "at": "2026-06-10T20:45:06.736Z",
+      "agent": "client",
+      "phase": "POST",
+      "thought": "task #1 funded and assigned",
+      "txHash": "0x0784b3c0afb05136ab24fe9005510c3ccd2fb6e9be0612c6cd0f26ddfc91d34f",
+      "escrowId": 1
+    },
+    {
+      "at": "2026-06-10T20:45:06.736Z",
+      "agent": "worker",
+      "phase": "OBSERVE",
+      "thought": "reading escrow #1 state from chain"
+    },
+    {
+      "at": "2026-06-10T20:45:07.271Z",
+      "agent": "worker",
+      "phase": "OBSERVE",
+      "thought": "found task: 0.00001 native, deadline 2026-06-10T21:15:00.000Z, status Accepted"
+    },
+    {
+      "at": "2026-06-10T20:45:07.271Z",
+      "agent": "worker",
+      "phase": "DECIDE",
+      "thought": "policy check PASSED (price ≥ 0.000005, deadline runway OK) — accepting"
+    },
+    {
+      "at": "2026-06-10T20:45:07.271Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "performing chain-analysis inference (live network observation)"
+    },
+    {
+      "at": "2026-06-10T20:45:09.506Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference complete → recommendation: \"NORMAL\" @ block 23923805"
+    },
+    {
+      "at": "2026-06-10T20:45:09.506Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "anchoring inference result hash on-chain via deliver()"
+    },
+    {
+      "at": "2026-06-10T20:45:16.419Z",
+      "agent": "worker",
+      "phase": "EXECUTE",
+      "thought": "inference result anchored on-chain (hash=0x79499038358234e6…)",
+      "txHash": "0xadb3c19e431af28a5674c107ac23412b9e215f14180e608a3f74d07111afd3aa"
+    },
+    {
+      "at": "2026-06-10T20:45:16.419Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "verifying delivery hash matches the received artifact"
+    },
+    {
+      "at": "2026-06-10T20:45:16.870Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "hash verified ✓ — artifact is exactly what was anchored"
+    },
+    {
+      "at": "2026-06-10T20:45:22.635Z",
+      "agent": "client",
+      "phase": "VERIFY",
+      "thought": "payment released to worker",
+      "txHash": "0xe00349769f86a148fd586b3e61e457c7b3652ad8b7e6ac7d988772cadf4c9f45"
+    },
+    {
+      "at": "2026-06-10T20:45:23.198Z",
+      "agent": "worker",
+      "phase": "VERIFY",
+      "thought": "task #1 final status: Released — payment received"
+    },
+    {
+      "at": "2026-06-10T20:45:23.198Z",
+      "agent": "worker",
+      "phase": "DONE",
+      "thought": "autonomous commerce loop complete: observe → decide → execute → verify, all on-chain"
+    }
+  ]
+}

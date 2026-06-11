@@ -1,0 +1,77 @@
+{
+  "demos": {
+    "contract-deployments": [
+      {
+        "step": "deploy AgentEscrow",
+        "result": {
+          "ok": true,
+          "txHash": "0x0cd452a1684968c8c1810475f37c0dadb1be006158e8f9fa5ee00540bc3cfdc4"
+        }
+      },
+      {
+        "step": "deploy StreamPay",
+        "result": {
+          "ok": true,
+          "txHash": "0xd5bfc0dbbeb6906c3e6b4329ec20f9ed7961adf9c0b9ce770f3bdf4722e1d4db"
+        }
+      },
+      {
+        "step": "deploy InvoiceBook",
+        "result": {
+          "ok": true,
+          "txHash": "0xf2693dec25fe84c04bc8b204ce54847063f44c19cb7e0955df00c8d35e8b2edb"
+        }
+      },
+      {
+        "step": "deploy AgentRegistry",
+        "result": {
+          "ok": true,
+          "txHash": "0x5ca00d530ae0c14724706f722bc0cdebb4181494ca68198f73fd1e2b53e1f149"
+        }
+      }
+    ],
+    "clawkit-autonomous-agent": [
+      {
+        "step": "[worker] IDENTITY: registered clawkit-worker-mantle-sepolia on-chain",
+        "result": {
+          "ok": true,
+          "txHash": "0xb330c5dc68d5c83ba15b7d39e60e7f4fb5285b34ea9f29b4d4522e74e776affb"
+        }
+      },
+      {
+        "step": "[worker] IDENTITY: declared capability chain-analysis",
+        "result": {
+          "ok": true,
+          "txHash": "0x1b5061683d61df61a914dc352d1001f2c5c752ba552e36cebaa1ebf405d50fff"
+        }
+      },
+      {
+        "step": "[client] POST: task #1 funded and assigned",
+        "result": {
+          "ok": true,
+          "txHash": "0x012f94c7545cf99ed041db64b8992abc2f2109f0af9a515fb7aab4e81f0b745e"
+        }
+      },
+      {
+        "step": "[worker] EXECUTE: inference result anchored on-chain (hash=0x6bd1671ab42ef140\u2026",
+        "result": {
+          "ok": true,
+          "txHash": "0xb3a7abc917bc811780af47b66fab958313c6ded1b4c5f57e3ffece66dffb60fa"
+        }
+      },
+      {
+        "step": "[client] VERIFY: payment released to worker",
+        "result": {
+          "ok": true,
+          "txHash": "0x2d25bc641ea899064fc7074f657c9b7b27c91cb3d1928bab7b4243092ecb4916"
+        }
+      }
+    ]
+  },
+  "verifiedSourcify": {
+    "AgentEscrow": "exact_match",
+    "StreamPay": "exact_match",
+    "InvoiceBook": "exact_match",
+    "AgentRegistry": "exact_match"
+  }
+}

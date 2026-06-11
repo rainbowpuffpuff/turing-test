@@ -68,7 +68,7 @@ server.tool(
       name: { type: 'string', minLength: 1, maxLength: 64 },
       metadataURI: { type: 'string', description: 'optional' },
       endpoint: { type: 'string', description: 'optional' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['name'],
   },
@@ -92,7 +92,7 @@ server.tool(
       metadataURI: { type: 'string' },
       endpoint: { type: 'string' },
       active: { type: 'boolean', description: 'default true' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
   },
   async ({ metadataURI = '', endpoint = '', active = true, network }) => {
@@ -110,7 +110,7 @@ server.tool(
     type: 'object',
     properties: {
       label: { type: 'string', minLength: 1, maxLength: 128 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['label'],
   },
@@ -132,7 +132,7 @@ server.tool(
     properties: {
       subject: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       label: { type: 'string', minLength: 1, maxLength: 128 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['subject', 'label'],
   },
@@ -154,7 +154,7 @@ server.tool(
     properties: {
       name: { type: 'string', description: 'agent name to resolve' },
       address: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$', description: 'or owner address' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
   },
   async ({ name, address, network }) => {
@@ -184,7 +184,7 @@ server.tool(
     properties: {
       subject: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       labels: { type: 'array', items: { type: 'string' }, minItems: 1, maxItems: 20 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['subject', 'labels'],
   },

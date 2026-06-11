@@ -68,7 +68,7 @@ server.tool(
       dueInDays: { type: 'number', minimum: 0, description: 'informational due date (default 7)' },
       memo: { type: 'string', maxLength: 64, description: 'short reference, stored on-chain' },
       memoContent: { type: 'string', description: 'full invoice document (line items etc.) — only its keccak hash goes on-chain' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['amount', 'memo'],
   },
@@ -109,7 +109,7 @@ server.tool(
     properties: {
       invoiceId: { type: 'integer', minimum: 0 },
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$', description: 'human units; omit to pay remaining in full' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['invoiceId'],
   },
@@ -159,7 +159,7 @@ server.tool(
     properties: {
       invoiceId: { type: 'integer', minimum: 0 },
       historyBlocks: { type: 'integer', minimum: 0, maximum: 2000000, description: 'how many recent blocks to scan for payments (default 200000)' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['invoiceId'],
   },
@@ -206,7 +206,7 @@ server.tool(
 server.tool(
   'cancel_invoice',
   'Cancel an invoice you issued (only unpaid/partially-paid can be cancelled; received funds are kept — they were forwarded on payment).',
-  { type: 'object', properties: { invoiceId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['invoiceId'] },
+  { type: 'object', properties: { invoiceId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['invoiceId'] },
   async ({ invoiceId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, bookAddress(network), encodeCall('cancel(uint256)', [invoiceId]), 0n, network);
@@ -223,7 +223,7 @@ server.tool(
     properties: {
       issuer: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$', description: 'defaults to PHAROS_PRIVATE_KEY address' },
       historyBlocks: { type: 'integer', minimum: 0, maximum: 2000000, description: 'default 200000' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
   },
   async ({ issuer, historyBlocks = 200000, network }) => {

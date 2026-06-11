@@ -1,0 +1,34 @@
+{
+  "mantle-sepolia": {
+    "AgentEscrow": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
+    "StreamPay": "0xb6c2312de42b48c934ab532ccbcb80ab38a71c49",
+    "InvoiceBook": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+    "AgentRegistry": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3"
+  },
+  "details": {
+    "AgentEscrow": {
+      "address": "0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd",
+      "txHash": "0x0cd452a1684968c8c1810475f37c0dadb1be006158e8f9fa5ee00540bc3cfdc4",
+      "block": 39817202,
+      "gasUsed": 1172150
+    },
+    "StreamPay": {
+      "address": "0xb6c2312de42b48c934ab532ccbcb80ab38a71c49",
+      "txHash": "0xd5bfc0dbbeb6906c3e6b4329ec20f9ed7961adf9c0b9ce770f3bdf4722e1d4db",
+      "block": 39817206,
+      "gasUsed": 934919
+    },
+    "InvoiceBook": {
+      "address": "0x8a026720e7d83737a286c31f5eaaf8283751e96e",
+      "txHash": "0xf2693dec25fe84c04bc8b204ce54847063f44c19cb7e0955df00c8d35e8b2edb",
+      "block": 39817209,
+      "gasUsed": 1156977
+    },
+    "AgentRegistry": {
+      "address": "0x204ec9f83a804672121d946d3da7f66b5c7b2cc3",
+      "txHash": "0x5ca00d530ae0c14724706f722bc0cdebb4181494ca68198f73fd1e2b53e1f149",
+      "block": 39817231,
+      "gasUsed": 1347007
+    }
+  }
+}

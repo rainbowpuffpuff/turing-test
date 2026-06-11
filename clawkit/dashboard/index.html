@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClawKit — Agent Economy Skills for Mantle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e14;--panel:#10161f;--panel2:#151d29;--line:#1f2a38;--txt:#dde6f0;--dim:#7d8b9d;--mnt:#65e2b0;--ph:#79c0ff;--amber:#f0b35e;--red:#ff7a7a;--mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.55;padding:0 5%}
+a{color:var(--mnt);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto}
+header{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.crumb{font-family:var(--mono);font-size:13px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(34px,5vw,56px);font-weight:700;margin:14px 0 10px;letter-spacing:-.02em}
+h1 .claw{color:var(--mnt)}
+.lede{font-size:18px;color:var(--dim);max-width:760px}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.badge{font-family:var(--mono);font-size:12px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;color:var(--dim)}
+.badge b{color:var(--txt);font-weight:600}
+section{padding:46px 0;border-bottom:1px solid var(--line)}
+h2{font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mnt);margin-bottom:22px}
+h2 .n{color:var(--dim)}
+.grid{display:grid;gap:14px}
+@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g5{grid-template-columns:repeat(5,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.stat .v{font-family:var(--mono);font-size:26px;font-weight:600}
+.stat .k{font-size:12.5px;color:var(--dim);margin-top:3px}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mnt);margin-right:7px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.mono{font-family:var(--mono);font-size:13px}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);color:var(--dim);margin:1px 2px 1px 0}
+.net-mnt{color:var(--mnt)}.net-ph{color:var(--ph)}
+.skill{display:flex;flex-direction:column;gap:8px}
+.skill h3{font-size:17px}
+.skill .tl{font-size:13.5px;color:var(--dim)}
+.kbd{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:13px;overflow-x:auto;white-space:pre}
+.j{font-family:var(--mono);font-size:13px}
+.j .ph{color:var(--amber)}.j .ag{color:var(--ph)}.j .tx a{color:var(--mnt)}
+.j-row{padding:7px 10px;border-left:2px solid var(--line);margin:4px 0;background:var(--panel)}
+.j-row.has-tx{border-left-color:var(--mnt)}
+footer{padding:42px 0 64px;color:var(--dim);font-size:14px}
+.flow{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.flow .step{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+.flow .step b{display:block;font-family:var(--mono);font-size:12px;color:var(--mnt);letter-spacing:.1em;margin-bottom:6px}
+.flow .step span{font-size:12.5px;color:var(--dim)}
+.err{color:var(--red);font-family:var(--mono);font-size:12px}
+.addr-pill{font-family:var(--mono);font-size:12px;word-break:break-all}
+.note{font-size:13px;color:var(--dim);margin-top:12px}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <div class="crumb">The Turing Test Hackathon 2026 · Agentic Wallets &amp; Economy + AI DevTools</div>
+  <h1><span class="claw">Claw</span>Kit</h1>
+  <p class="lede">An agent-economy skill suite for Mantle: 10 OpenClaw/RealClaw-loadable skills (60 tools) that let AI agents pay, earn, hire, bill, identify, and observe — with original contracts deployed on Mantle Sepolia and every agent decision verifiable on-chain.</p>
+  <div class="badges">
+    <span class="badge"><b>60</b> agent tools</span>
+    <span class="badge"><b>10</b> skills</span>
+    <span class="badge"><b>5</b> original contracts</span>
+    <span class="badge"><b>0</b> npm dependencies</span>
+    <span class="badge">RealClaw-extensible</span>
+    <span class="badge">ERC-4337 native</span>
+  </div>
+</header>
+
+<section>
+  <h2>Live network state <span class="n">— read in your browser, directly from chain RPCs</span></h2>
+  <div class="grid g2">
+    
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <strong style="color:#65e2b0">Mantle Sepolia</strong>
+        <span class="mono" style="font-size:12px;color:var(--dim)">chainId 5003</span>
+      </div>
+      <div class="grid g3">
+        <div class="stat"><div class="v" id="mantle-sepolia-block"><span class="live"></span>…</div><div class="k">latest block</div></div>
+        <div class="stat"><div class="v" id="mantle-sepolia-gas">…</div><div class="k">gas price</div></div>
+        <div class="stat"><div class="v" id="mantle-sepolia-bal">…</div><div class="k">agent wallet MNT</div></div>
+      </div>
+      <div class="note" id="mantle-sepolia-status">connecting…</div>
+    </div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <strong style="color:#79c0ff">Pharos Atlantic</strong>
+        <span class="mono" style="font-size:12px;color:var(--dim)">chainId 688689</span>
+      </div>
+      <div class="grid g3">
+        <div class="stat"><div class="v" id="atlantic-testnet-block"><span class="live"></span>…</div><div class="k">latest block</div></div>
+        <div class="stat"><div class="v" id="atlantic-testnet-gas">…</div><div class="k">gas price</div></div>
+        <div class="stat"><div class="v" id="atlantic-testnet-bal">…</div><div class="k">agent wallet PHRS</div></div>
+      </div>
+      <div class="note" id="atlantic-testnet-status">connecting…</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Deployed contracts <span class="n">— original Solidity, MIT, source in repo</span></h2>
+  <div class="card">
+  <table>
+    <thead><tr><th>Contract</th><th>Mantle Sepolia</th><th>Pharos Atlantic (origin chain)</th></tr></thead>
+    <tbody>
+      <tr>
+          <td><strong>AgentEscrow</strong></td>
+          <td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd" target="_blank" rel="noopener noreferrer">0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd</a></td>
+          <td class="addr-pill"><a class="net-ph" href="https://atlantic.pharosscan.xyz/address/0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd" target="_blank" rel="noopener noreferrer">0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd</a></td>
+        </tr><tr>
+          <td><strong>StreamPay</strong></td>
+          <td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/0xb6c2312de42b48c934ab532ccbcb80ab38a71c49" target="_blank" rel="noopener noreferrer">0xb6c2312de42b48c934ab532ccbcb80ab38a71c49</a></td>
+          <td class="addr-pill"><a class="net-ph" href="https://atlantic.pharosscan.xyz/address/0xb6c2312de42b48c934ab532ccbcb80ab38a71c49" target="_blank" rel="noopener noreferrer">0xb6c2312de42b48c934ab532ccbcb80ab38a71c49</a></td>
+        </tr><tr>
+          <td><strong>InvoiceBook</strong></td>
+          <td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/0x8a026720e7d83737a286c31f5eaaf8283751e96e" target="_blank" rel="noopener noreferrer">0x8a026720e7d83737a286c31f5eaaf8283751e96e</a></td>
+          <td class="addr-pill"><a class="net-ph" href="https://atlantic.pharosscan.xyz/address/0x8a026720e7d83737a286c31f5eaaf8283751e96e" target="_blank" rel="noopener noreferrer">0x8a026720e7d83737a286c31f5eaaf8283751e96e</a></td>
+        </tr><tr>
+          <td><strong>AgentRegistry</strong></td>
+          <td class="addr-pill"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/address/0x204ec9f83a804672121d946d3da7f66b5c7b2cc3" target="_blank" rel="noopener noreferrer">0x204ec9f83a804672121d946d3da7f66b5c7b2cc3</a></td>
+          <td class="addr-pill"><a class="net-ph" href="https://atlantic.pharosscan.xyz/address/0x204ec9f83a804672121d946d3da7f66b5c7b2cc3" target="_blank" rel="noopener noreferrer">0x204ec9f83a804672121d946d3da7f66b5c7b2cc3</a></td>
+        </tr><tr>
+          <td><strong>AgentToken</strong></td>
+          <td class="addr-pill"><span class="err">deploying…</span></td>
+          <td class="addr-pill"><a class="net-ph" href="https://atlantic.pharosscan.xyz/address/0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e" target="_blank" rel="noopener noreferrer">0x14c957c36e438aEFAE0E0bd241Ec75a06aF06C3e</a></td>
+        </tr>
+    </tbody>
+  </table>
+  <p class="note">The suite is chain-portable by design — the same skills run against both networks by switching one parameter. Mantle is the submission target; Pharos deployments demonstrate portability.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The autonomous loop <span class="n">— what the agent does without a human</span></h2>
+  <div class="flow">
+    <div class="step"><b>OBSERVE</b><span>scan escrow board + network state via chain-sentinel</span></div>
+    <div class="step"><b>DECIDE</b><span>policy engine: price floor, deadline risk, capability match</span></div>
+    <div class="step"><b>EXECUTE</b><span>run inference → anchor result hash on-chain via deliver()</span></div>
+    <div class="step"><b>VERIFY</b><span>client re-hashes artifact vs on-chain proof → release</span></div>
+    <div class="step"><b>RECOVER</b><span>adaptive retries, graceful degradation, dispute path</span></div>
+  </div>
+  <div style="margin-top:18px" class="card">
+    <div style="margin-bottom:10px"><strong>Decision journal</strong> <span class="note">(mantle-sepolia run — every thought logged, every action a tx)</span></div>
+    <div class="j">
+      
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">IDENTITY</span> registering on-chain identity (idempotent)
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">IDENTITY</span> registration failed (RPC eth_estimateGas: execution reverted) — continuing without identity (graceful degradation)
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[client]</span> <span class="ph">POST</span> locking payment for task: gas-optimization analysis report
+        
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[client]</span> <span class="ph">POST</span> task #1 funded and assigned
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x012f94c7545cf99ed041db64b8992abc2f2109f0af9a515fb7aab4e81f0b745e" target="_blank" rel="noopener noreferrer">0x012f94c7545cf99ed041db64b8992abc…</a></div>
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">OBSERVE</span> reading escrow #1 state from chain
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">RECOVER</span> read looks stale (empty struct from lagging RPC node) — re-reading in 3s
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">OBSERVE</span> found task: 0.00001 native, deadline 2026-06-11T12:34:22.000Z, status Accepted
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">DECIDE</span> policy check PASSED (price ≥ 0.000005, deadline runway OK) — accepting
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> performing chain-analysis inference (live network observation)
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference complete → recommendation: "NORMAL" @ block 39817398
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> anchoring inference result hash on-chain via deliver()
+        
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[worker]</span> <span class="ph">EXECUTE</span> inference result anchored on-chain (hash=0x6bd1671ab42ef140…)
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0xb3a7abc917bc811780af47b66fab958313c6ded1b4c5f57e3ffece66dffb60fa" target="_blank" rel="noopener noreferrer">0xb3a7abc917bc811780af47b66fab9583…</a></div>
+      </div>
+      <div class="j-row">
+        <span class="ag">[client]</span> <span class="ph">VERIFY</span> verifying delivery hash matches the received artifact
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[client]</span> <span class="ph">VERIFY</span> hash verified ✓ — artifact is exactly what was anchored
+        
+      </div>
+      <div class="j-row has-tx">
+        <span class="ag">[client]</span> <span class="ph">VERIFY</span> payment released to worker
+        <div class="tx">→ <a href="https://sepolia.mantlescan.xyz/tx/0x2d25bc641ea899064fc7074f657c9b7b27c91cb3d1928bab7b4243092ecb4916" target="_blank" rel="noopener noreferrer">0x2d25bc641ea899064fc7074f657c9b7b…</a></div>
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">VERIFY</span> task #1 final status: Delivered — payment received
+        
+      </div>
+      <div class="j-row">
+        <span class="ag">[worker]</span> <span class="ph">DONE</span> autonomous commerce loop complete: observe → decide → execute → verify, all on-chain
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Skill catalog <span class="n">— install into RealClaw/OpenClaw or any MCP runtime</span></h2>
+  <div class="kbd"># RealClaw / OpenClaw (skills install from the repo)
+npx skills add rainbowpuffpuff/turing-test --skill escrow,sentinel,payroll
+
+# any MCP runtime (Claude Desktop, Cursor, custom agents)
+node clawkit/escrow/src/server.mjs        # stdio MCP server — zero npm deps</div>
+  <div class="grid g2" style="margin-top:14px">
+    
+    <div class="card skill">
+      <h3>x402 Buyer</h3>
+      <div class="tl">Let any AI agent PAY for x402-gated APIs and data on Pharos — with hard spending caps.</div>
+      <div><span class="tag">fetch_with_x402</span><span class="tag">parse_requirements</span><span class="tag">pay_requirements</span><span class="tag">spending_report</span></div>
+      
+    </div>
+    <div class="card skill">
+      <h3>x402 Merchant</h3>
+      <div class="tl">Turn any API or resource into a paid x402 endpoint on Pharos — agents EARN revenue.</div>
+      <div><span class="tag">create_payment_requirements</span><span class="tag">verify_payment</span><span class="tag">settle_and_receipt</span><span class="tag">price_catalog</span><span class="tag">start_paywall_server</span></div>
+      
+    </div>
+    <div class="card skill">
+      <h3>Smart Account</h3>
+      <div class="tl">ERC-4337 smart accounts for AI agents — deterministic addresses, batched execution, separated keys.</div>
+      <div><span class="tag">predict_account</span><span class="tag">deploy_account</span><span class="tag">account_status</span><span class="tag">build_batch</span><span class="tag">execute</span><span class="tag">withdraw</span></div>
+      <div class="note">⛓ EntryPoint v0.6 0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789 + SimpleAccountFactory 0x9406Cc6185a346906296840746125a0E44976454 </div>
+    </div>
+    <div class="card skill">
+      <h3>Agent Escrow</h3>
+      <div class="tl">Trustless escrow for agent-to-agent service commerce: lock, deliver with proof, release.</div>
+      <div><span class="tag">create_escrow</span><span class="tag">accept_task</span><span class="tag">submit_delivery</span><span class="tag">release_payment</span><span class="tag">claim_after_window</span><span class="tag">refund_expired</span><span class="tag">open_dispute</span><span class="tag">propose_resolution</span><span class="tag">get_escrow</span><span class="tag">hash_artifact</span></div>
+      <div class="note">⛓ AgentEscrow 0x22a43e08b67dab1f46a8f908834cd7e37e3fa3cd </div>
+    </div>
+    <div class="card skill">
+      <h3>Stream Pay</h3>
+      <div class="tl">Per-second payment streams: pay an agent continuously while it works.</div>
+      <div><span class="tag">open_stream</span><span class="tag">stream_status</span><span class="tag">withdraw_vested</span><span class="tag">top_up</span><span class="tag">cancel_stream</span><span class="tag">quote_stream</span></div>
+      <div class="note">⛓ StreamPay 0xb6c2312de42b48c934ab532ccbcb80ab38a71c49 </div>
+    </div>
+    <div class="card skill">
+      <h3>Payroll Batch</h3>
+      <div class="tl">RealFi batch disbursement: pay a whole team in ONE transaction via Multicall3.</div>
+      <div><span class="tag">parse_recipients</span><span class="tag">dry_run</span><span class="tag">run_payroll</span><span class="tag">payout_report</span></div>
+      <div class="note">⛓ Multicall3 0xcA11bde05977b3631167028862bE2a173976CA11 </div>
+    </div>
+    <div class="card skill">
+      <h3>Invoice Book</h3>
+      <div class="tl">On-chain invoicing for the agent economy — issue, pay, track, reconcile.</div>
+      <div><span class="tag">create_invoice</span><span class="tag">pay_invoice</span><span class="tag">invoice_status</span><span class="tag">cancel_invoice</span><span class="tag">list_my_invoices</span></div>
+      <div class="note">⛓ InvoiceBook 0x8a026720e7d83737a286c31f5eaaf8283751e96e </div>
+    </div>
+    <div class="card skill">
+      <h3>Agent Registry</h3>
+      <div class="tl">On-chain identity for AI agents: unique names, capabilities, peer attestations.</div>
+      <div><span class="tag">register_agent</span><span class="tag">update_profile</span><span class="tag">declare_capability</span><span class="tag">attest_capability</span><span class="tag">lookup_agent</span><span class="tag">check_reputation</span></div>
+      <div class="note">⛓ AgentRegistry 0x204ec9f83a804672121d946d3da7f66b5c7b2cc3 </div>
+    </div>
+    <div class="card skill">
+      <h3>Token Launcher</h3>
+      <div class="tl">Agents launch their own on-chain economies: deploy capped ERC-20s with permit, mint, burn.</div>
+      <div><span class="tag">deploy_token</span><span class="tag">token_info</span><span class="tag">mint_tokens</span><span class="tag">burn_tokens</span><span class="tag">transfer_tokens</span><span class="tag">renounce_minting</span><span class="tag">wrap_native</span><span class="tag">unwrap_native</span></div>
+      <div class="note">⛓ AgentToken </div>
+    </div>
+    <div class="card skill">
+      <h3>Chain Sentinel</h3>
+      <div class="tl">The eyes of every Pharos agent: watch addresses, decode events, monitor balances — with diff cursors.</div>
+      <div><span class="tag">watch_address</span><span class="tag">watch_events</span><span class="tag">balance_watch</span><span class="tag">tx_inspect</span><span class="tag">chain_pulse</span><span class="tag">decode_calldata</span></div>
+      
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>On-chain proof <span class="n">— 31 verified transactions across both networks</span></h2>
+  <div class="card" style="max-height:420px;overflow-y:auto">
+  <table>
+    <thead><tr><th>Network</th><th>Skill</th><th>Action</th><th>Transaction</th></tr></thead>
+    <tbody>
+      <tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">agent-registry</td>
+          <td style="font-size:13px">register_agent</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x1145510d4c5b94c30bda71901f77b65684e2a456ebedd74aa9e7532306c4a90d" target="_blank" rel="noopener noreferrer">0x1145510d4c5b94c30bda7190…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">agent-registry</td>
+          <td style="font-size:13px">declare_capability:x402-payments</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x0e091b7808c2c190a2f99e086feb047216ac111d747986d37ed806d425653ab3" target="_blank" rel="noopener noreferrer">0x0e091b7808c2c190a2f99e08…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">agent-registry</td>
+          <td style="font-size:13px">declare_capability:escrow-commerce</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x470ec85ac1d7c106385b056ea6407029cc18576c8195f5f87abe3e3cf4fce808" target="_blank" rel="noopener noreferrer">0x470ec85ac1d7c106385b056e…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">token-launcher</td>
+          <td style="font-size:13px">deploy_token</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xc9367cb8718bbaeea82a376d4e4e67ec0b3cd0db5c1725792f7d6f64084ac436" target="_blank" rel="noopener noreferrer">0xc9367cb8718bbaeea82a376d…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">token-launcher</td>
+          <td style="font-size:13px">mint_tokens</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xf95f3111bb432c3c6096e56849d450c42fdc1785f161ad934423e71d09864379" target="_blank" rel="noopener noreferrer">0xf95f3111bb432c3c6096e568…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">payroll-batch</td>
+          <td style="font-size:13px">run_payroll(native,multicall3)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x7dfaeed04d106031d93c921986b387b31e180b16efd30de21bf93c45eee19f7e" target="_blank" rel="noopener noreferrer">0x7dfaeed04d106031d93c9219…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">agent-escrow</td>
+          <td style="font-size:13px">create_escrow</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x2b38e9578da794b37d4b6ddf07a855b67861b0310a74199fb8200f33b6facb04" target="_blank" rel="noopener noreferrer">0x2b38e9578da794b37d4b6ddf…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">agent-escrow</td>
+          <td style="font-size:13px">submit_delivery</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x7fee06ef8d87b45b915adbcd6f3310b3be90364c03e9f77880397489396348de" target="_blank" rel="noopener noreferrer">0x7fee06ef8d87b45b915adbcd…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">agent-escrow</td>
+          <td style="font-size:13px">release_payment</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688" target="_blank" rel="noopener noreferrer">0xdedd5d10d833fe5ac8a70c03…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">stream-pay</td>
+          <td style="font-size:13px">open_stream</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x17a0c812b18916216481e7a76ce2b260ae6b5151cca903bd7a0fc4d0c3255793" target="_blank" rel="noopener noreferrer">0x17a0c812b18916216481e7a7…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">stream-pay</td>
+          <td style="font-size:13px">withdraw_vested</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xa8aa3ac7129bda6c2ddacff75e99a31d09286c26ebaab10c70fcaf8a8a7bd6e9" target="_blank" rel="noopener noreferrer">0xa8aa3ac7129bda6c2ddacff7…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">stream-pay</td>
+          <td style="font-size:13px">cancel_stream(fair-split)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x27b19c82e4852e6c2a4d184d49af1031bf8caa3cfd66c7888d280cd8aaf6e97c" target="_blank" rel="noopener noreferrer">0x27b19c82e4852e6c2a4d184d…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">invoice-book</td>
+          <td style="font-size:13px">create_invoice(native)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xa2a529ec29802da3ba68fa00774ca413a5655a97f8352d770c9d36180b51319e" target="_blank" rel="noopener noreferrer">0xa2a529ec29802da3ba68fa00…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">invoice-book</td>
+          <td style="font-size:13px">create_invoice(PKDC)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x4d1e549d1eca15e59b1dbdbdd2d6ca1f90ecf27ec2e5676f1e49b9cc405dbba4" target="_blank" rel="noopener noreferrer">0x4d1e549d1eca15e59b1dbdbd…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">invoice-book</td>
+          <td style="font-size:13px">pay_invoice(native,full)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xa1b4885d4a29d0f8400bcc01043a713abff1488fe852404dca42aa80827110eb" target="_blank" rel="noopener noreferrer">0xa1b4885d4a29d0f8400bcc01…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">invoice-book</td>
+          <td style="font-size:13px">pay_invoice(PKDC,partial)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xae7621b66b3b0048bf9bf6adefc039ee54d3d4ad79dde9d4622538da15380bd4" target="_blank" rel="noopener noreferrer">0xae7621b66b3b0048bf9bf6ad…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">smart-account</td>
+          <td style="font-size:13px">deploy_account</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x99bf8d55ece283a9bb0101a31f03f38c7dce0ad1a7ca3ac62cc939503d43eccd" target="_blank" rel="noopener noreferrer">0x99bf8d55ece283a9bb0101a3…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">smart-account</td>
+          <td style="font-size:13px">fund_account(via payroll multicall)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x3c9a789e5067bc494393ed0aafa3a5710747276cf8b4652844657f737efc2ff7" target="_blank" rel="noopener noreferrer">0x3c9a789e5067bc494393ed0a…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">smart-account</td>
+          <td style="font-size:13px">mint_PKDC_to_account</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x2b82d860a5ef5b34b223a671c3f4f4c94412771ced9eeee44a4f9dc3a1f4d1d1" target="_blank" rel="noopener noreferrer">0x2b82d860a5ef5b34b223a671…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">smart-account</td>
+          <td style="font-size:13px">executeBatch(2 PKDC transfers, 1 tx)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x710915bc760f25f0cc69e5f5b014169689cae8491210b984d049265e1dc7e30c" target="_blank" rel="noopener noreferrer">0x710915bc760f25f0cc69e5f5…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">x402-buyer</td>
+          <td style="font-size:13px">fetch_with_x402(full closed loop)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0x77c18c8730734a7e8da9698ce4f7eaef1f59520c9546e0b3896e85eaabe640a1" target="_blank" rel="noopener noreferrer">0x77c18c8730734a7e8da9698c…</a></td>
+        </tr><tr>
+          <td><span class="net-ph mono" style="font-size:12px">Pharos Atlantic</span></td>
+          <td class="mono" style="font-size:12px">chain-sentinel</td>
+          <td style="font-size:13px">tx_inspect(escrow release)</td>
+          <td class="mono" style="font-size:12px"><a class="net-ph" href="https://atlantic.pharosscan.xyz/tx/0xdedd5d10d833fe5ac8a70c03b6d66841f5427e62bca0320cba9632e2dec1b688" target="_blank" rel="noopener noreferrer">0xdedd5d10d833fe5ac8a70c03…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">contract-deployments</td>
+          <td style="font-size:13px">deploy AgentEscrow</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0x0cd452a1684968c8c1810475f37c0dadb1be006158e8f9fa5ee00540bc3cfdc4" target="_blank" rel="noopener noreferrer">0x0cd452a1684968c8c1810475…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">contract-deployments</td>
+          <td style="font-size:13px">deploy StreamPay</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0xd5bfc0dbbeb6906c3e6b4329ec20f9ed7961adf9c0b9ce770f3bdf4722e1d4db" target="_blank" rel="noopener noreferrer">0xd5bfc0dbbeb6906c3e6b4329…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">contract-deployments</td>
+          <td style="font-size:13px">deploy InvoiceBook</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0xf2693dec25fe84c04bc8b204ce54847063f44c19cb7e0955df00c8d35e8b2edb" target="_blank" rel="noopener noreferrer">0xf2693dec25fe84c04bc8b204…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">contract-deployments</td>
+          <td style="font-size:13px">deploy AgentRegistry</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0x5ca00d530ae0c14724706f722bc0cdebb4181494ca68198f73fd1e2b53e1f149" target="_blank" rel="noopener noreferrer">0x5ca00d530ae0c14724706f72…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">clawkit-autonomous-agent</td>
+          <td style="font-size:13px">[worker] IDENTITY: registered clawkit-worker-mantle-sepolia on-chain</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0xb330c5dc68d5c83ba15b7d39e60e7f4fb5285b34ea9f29b4d4522e74e776affb" target="_blank" rel="noopener noreferrer">0xb330c5dc68d5c83ba15b7d39…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">clawkit-autonomous-agent</td>
+          <td style="font-size:13px">[worker] IDENTITY: declared capability chain-analysis</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0x1b5061683d61df61a914dc352d1001f2c5c752ba552e36cebaa1ebf405d50fff" target="_blank" rel="noopener noreferrer">0x1b5061683d61df61a914dc35…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">clawkit-autonomous-agent</td>
+          <td style="font-size:13px">[client] POST: task #1 funded and assigned</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0x012f94c7545cf99ed041db64b8992abc2f2109f0af9a515fb7aab4e81f0b745e" target="_blank" rel="noopener noreferrer">0x012f94c7545cf99ed041db64…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">clawkit-autonomous-agent</td>
+          <td style="font-size:13px">[worker] EXECUTE: inference result anchored on-chain (hash=0x6bd1671ab42ef140…</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0xb3a7abc917bc811780af47b66fab958313c6ded1b4c5f57e3ffece66dffb60fa" target="_blank" rel="noopener noreferrer">0xb3a7abc917bc811780af47b6…</a></td>
+        </tr><tr>
+          <td><span class="net-mnt mono" style="font-size:12px">Mantle Sepolia</span></td>
+          <td class="mono" style="font-size:12px">clawkit-autonomous-agent</td>
+          <td style="font-size:13px">[client] VERIFY: payment released to worker</td>
+          <td class="mono" style="font-size:12px"><a class="net-mnt" href="https://sepolia.mantlescan.xyz/tx/0x2d25bc641ea899064fc7074f657c9b7b27c91cb3d1928bab7b4243092ecb4916" target="_blank" rel="noopener noreferrer">0x2d25bc641ea899064fc7074f…</a></td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Architecture <span class="n">— why judges can audit this in minutes</span></h2>
+  <div class="grid g3">
+    <div class="card"><strong>Zero-dependency runtime</strong><p class="note">Own EVM stack — RLP, EIP-1559 signing, ABI codec, EIP-712 — verified against known-answer test vectors, over vendored audited @noble crypto. From-scratch MCP server. Nothing to supply-chain-attack; the whole runtime is ~1,200 auditable lines.</p></div>
+    <div class="card"><strong>Account abstraction built in</strong><p class="note">Smart-account skill drives the canonical ERC-4337 EntryPoint + factory (verified present on Mantle Sepolia): deterministic addresses, batched execution — the base for gasless agent UX via paymasters.</p></div>
+    <div class="card"><strong>Safety rails for autonomy</strong><p class="note">Hard spend caps, session budgets, confirm-gates on irreversible actions, JSON-schema validation on every call, policy engine for task acceptance — autonomy without unbounded risk.</p></div>
+  </div>
+</section>
+
+<footer>
+  ClawKit · The Turing Test Hackathon 2026 (Mantle) · repo: <a href="https://github.com/rainbowpuffpuff/turing-test" target="_blank" rel="noopener noreferrer">rainbowpuffpuff/turing-test</a> · suite also live on Pharos as PharosKit · MIT
+</footer>
+
+</div>
+<script>
+const NETS = {"mantle-sepolia":{"rpc":"https://rpc.sepolia.mantle.xyz","sym":"MNT"},"atlantic-testnet":{"rpc":"https://atlantic.dplabs-internal.com","sym":"PHRS"}};
+const AGENT = '0xc5f02b179A156414b72Af7d2E5998Ac754F69a09';
+async function rpc(url, method, params) {
+  const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }) });
+  const j = await r.json();
+  if (j.error) throw new Error(j.error.message);
+  return j.result;
+}
+async function refresh(key) {
+  const n = NETS[key];
+  try {
+    const [blk, gas, bal] = await Promise.all([
+      rpc(n.rpc, 'eth_blockNumber', []),
+      rpc(n.rpc, 'eth_gasPrice', []),
+      rpc(n.rpc, 'eth_getBalance', [AGENT, 'latest']),
+    ]);
+    document.getElementById(key + '-block').innerHTML = '<span class="live"></span>' + parseInt(blk, 16).toLocaleString();
+    document.getElementById(key + '-gas').textContent = (parseInt(gas, 16) / 1e9).toFixed(1) + ' gwei';
+    document.getElementById(key + '-bal').textContent = (parseInt(bal, 16) / 1e18).toFixed(4);
+    document.getElementById(key + '-status').textContent = 'live · refreshes every 12s · agent wallet ' + AGENT.slice(0, 10) + '…';
+  } catch (e) {
+    document.getElementById(key + '-status').innerHTML = '<span class="err">rpc unreachable from your network — proofs above remain verifiable on the explorer</span>';
+  }
+}
+for (const k of Object.keys(NETS)) { refresh(k); setInterval(() => refresh(k), 12000); }
+</script>
+</body>
+</html>

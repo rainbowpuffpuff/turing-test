@@ -46,7 +46,7 @@ server.tool(
     properties: {
       owner: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$', description: 'EOA owner (agent signing key address). Defaults to PHAROS_PRIVATE_KEY address.' },
       salt: { type: 'integer', minimum: 0, description: 'account index for same owner (default 0)' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
   },
   async ({ owner, salt = 0, network }) => {
@@ -79,7 +79,7 @@ server.tool(
     type: 'object',
     properties: {
       salt: { type: 'integer', minimum: 0, description: 'default 0' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
   },
   async ({ salt = 0, network }) => {
@@ -115,7 +115,7 @@ server.tool(
       account: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       owner: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       salt: { type: 'integer', minimum: 0 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
   },
   async ({ account, owner, salt = 0, network }) => {
@@ -203,7 +203,7 @@ server.tool(
       value: { type: 'string', description: 'wei, for single (default 0)' },
       data: { type: 'string', description: 'calldata for single, or raw calldata for raw' },
       calls: { type: 'array', description: 'for batch: [{to, value?, data?}]', items: { type: 'object' } },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['account', 'mode'],
   },
@@ -266,7 +266,7 @@ server.tool(
       account: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       to: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$', description: 'human units (e.g. "0.5")' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['account', 'to', 'amount'],
   },

@@ -28,6 +28,20 @@ export const NETWORKS = {
     explorerUrl: 'https://www.pharosscan.xyz/',
     nativeToken: 'PROS',
   },
+  'mantle-sepolia': {
+    name: 'mantle-sepolia',
+    rpcUrl: 'https://rpc.sepolia.mantle.xyz',
+    chainId: 5003,
+    explorerUrl: 'https://sepolia.mantlescan.xyz/',
+    nativeToken: 'MNT',
+  },
+  mantle: {
+    name: 'mantle',
+    rpcUrl: 'https://rpc.mantle.xyz',
+    chainId: 5000,
+    explorerUrl: 'https://mantlescan.xyz/',
+    nativeToken: 'MNT',
+  },
 };
 
 export const TOKENS = {
@@ -41,6 +55,16 @@ export const TOKENS = {
   mainnet: {
     WPROS: { address: '0x52c48d4213107b20bc583832b0d951fb9ca8f0b0', decimals: 18, symbol: 'WPROS' },
     USDC: { address: '0xc879c018db60520f4355c26ed1a6d572cdac1815', decimals: 6, symbol: 'USDC' },
+  },
+  'mantle-sepolia': {
+    WMNT: { address: '0x19f5557E23e9914A18239990f6C70D68FDF0deD5', decimals: 18, symbol: 'WMNT' },
+  },
+  mantle: {
+    WMNT: { address: '0x78c1b0C915c4FAA5FffA6CAbf0219DA63d7f4cb8', decimals: 18, symbol: 'WMNT' },
+    METH: { address: '0xcDA86A272531e8640cD7F1a92c01839911B90bb0', decimals: 18, symbol: 'mETH' },
+    USDY: { address: '0x5bE26527e817998A7206475496fDE1E68957c5A6', decimals: 18, symbol: 'USDY' },
+    USDT: { address: '0x201EBa5CC46D216Ce6DC03F6a759e8E766e956aE', decimals: 6, symbol: 'USDT' },
+    USDC: { address: '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9', decimals: 6, symbol: 'USDC' },
   },
 };
 

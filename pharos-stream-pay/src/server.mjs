@@ -82,7 +82,7 @@ server.tool(
       recipient: { type: 'string', pattern: '^0x[0-9a-fA-F]{40}$' },
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
       durationMinutes: { type: 'number', minimum: 0.1 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['recipient', 'amount', 'durationMinutes'],
   },
@@ -103,7 +103,7 @@ server.tool(
 server.tool(
   'stream_status',
   'Live status of a stream: vested so far, withdrawable now, withdrawn, remaining, progress %.',
-  { type: 'object', properties: { streamId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['streamId'] },
+  { type: 'object', properties: { streamId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['streamId'] },
   async ({ streamId, network }) => {
     const rpc = rpcFor(network);
     const addr = streamAddress(network);
@@ -135,7 +135,7 @@ server.tool(
 server.tool(
   'withdraw_vested',
   'As the stream recipient, withdraw everything vested so far.',
-  { type: 'object', properties: { streamId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['streamId'] },
+  { type: 'object', properties: { streamId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['streamId'] },
   async ({ streamId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, streamAddress(network), encodeCall('withdraw(uint256)', [streamId]), 0n, network);
@@ -152,7 +152,7 @@ server.tool(
     properties: {
       streamId: { type: 'integer', minimum: 0 },
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
     },
     required: ['streamId', 'amount'],
   },
@@ -167,7 +167,7 @@ server.tool(
 server.tool(
   'cancel_stream',
   'Cancel a stream (payer or recipient). Recipient receives vested-so-far; payer gets the remainder back. Fair to-the-second settlement.',
-  { type: 'object', properties: { streamId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] } }, required: ['streamId'] },
+  { type: 'object', properties: { streamId: { type: 'integer', minimum: 0 }, network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] } }, required: ['streamId'] },
   async ({ streamId, network }) => {
     const wallet = walletFor(network);
     const res = await sendAndReport(wallet, streamAddress(network), encodeCall('cancel(uint256)', [streamId]), 0n, network);

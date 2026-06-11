@@ -43,7 +43,7 @@ server.tool(
       asset: { type: 'string', description: '"native" | token symbol (USDC, USDT, WPHRS...) | 0x token address', },
       resource: { type: 'string', description: 'resource identifier, e.g. "GET /api/report/42"' },
       description: { type: 'string', description: 'human/agent readable description of what is being sold' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'], description: 'default atlantic-testnet' },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'], description: 'default atlantic-testnet' },
       validForSeconds: { type: 'integer', minimum: 60, maximum: 86400, description: 'requirement expiry (default 3600)' },
     },
     required: ['payTo', 'amount', 'resource'],
@@ -105,7 +105,7 @@ server.tool(
   async ({ requirements, requirementsB64, txHash, minConfirmations = 1 }) => {
     const req = requirements ?? (requirementsB64 ? unb64(requirementsB64) : null);
     if (!req) return { ok: false, error: 'provide requirements or requirementsB64' };
-    const netName = req.network === 'eip155:1672' ? 'mainnet' : 'atlantic-testnet';
+    const netName = { 'eip155:1672': 'mainnet', 'eip155:688689': 'atlantic-testnet', 'eip155:5003': 'mantle-sepolia', 'eip155:5000': 'mantle' }[req.network] ?? 'atlantic-testnet';
     const rpc = rpcFor(netName);
 
     const [tx, receipt, latestHex] = await Promise.all([
@@ -218,7 +218,7 @@ server.tool(
     type: 'object',
     properties: {
       usd: { type: 'number', minimum: 0, description: 'price in USD' },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
       priceNativeUsd: { type: 'number', minimum: 0, description: 'optional PHRS/PROS price in USD for native quoting' },
     },
     required: ['usd'],
@@ -249,7 +249,7 @@ server.tool(
       amount: { type: 'string', pattern: '^[0-9]+(\\.[0-9]+)?$' },
       asset: { type: 'string' },
       port: { type: 'integer', minimum: 1024, maximum: 65535 },
-      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet'] },
+      network: { type: 'string', enum: ['atlantic-testnet', 'mainnet', 'mantle-sepolia', 'mantle'] },
       ttlSeconds: { type: 'integer', minimum: 10, maximum: 3600, description: 'auto-shutdown (default 600)' },
       resourceBody: { type: 'string', description: 'the protected content to serve (default: sample premium JSON)' },
     },
